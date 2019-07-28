@@ -95,7 +95,7 @@ export default {
       }
     },
     doPost () {
-      if (!this.$refs.ta.valid) {
+      if (!this.post) {
         this.$vux.toast.text('还没有写内容呢')
         return
       }
@@ -103,7 +103,7 @@ export default {
         video_id: this.$route.params.id,
         content: this.post
       }).then(r => {
-
+        this.$vux.toast.text('评论提交成功')
       })
     }
   },

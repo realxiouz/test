@@ -25,8 +25,8 @@
     </group>
 
     <group>
-      <cell title="金币明细" is-link></cell>
-      <cell title="余额明细" is-link></cell>
+      <cell title="金币明细" is-link link="/score-detail"></cell>
+      <cell title="余额明细" is-link link="/money-detail"></cell>
     </group>
 
     <box gap="10px 10px">
@@ -38,9 +38,11 @@
 
 <script>
 import { XButton, Box } from 'vux'
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
+import { getInfoByToken } from '@/utils/api'
 
 export default {
+  name: 'MyWallet',
   components: {
     XButton, Box
   },
@@ -48,10 +50,15 @@ export default {
     coin: 0
   }),
   mounted () {
-
+    getInfoByToken().then(r => {
+      this.setUser(r.data)
+    })
   },
   computed: {
     ...mapState(['user'])
+  },
+  methods: {
+    ...mapMutations(['setUser'])
   }
 }
 </script>

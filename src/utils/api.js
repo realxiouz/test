@@ -9,8 +9,8 @@ export const getQrcode = _ => r.get('/promotion/qrcode')
 
 // photo
 export const allPhotoTypes = _ => r.get('/index/category')
-export const getPhotosByType = p => r.get('/index/gallery', {params: p})
-export const getPhotoDetail = p => r.get('/index/detail', {params: p})
+export const getPhotosByType = p => r.get('/gallery/index', {params: p})
+export const getPhotoDetail = p => r.get('/gallery/detail', {params: p})
 export const buyPhoto = p => r.post('/gallery/buy', p)
 export const checkBuyPhoto = p => r.get('/gallery/isbuy', {params: p})
 export const orderPhoto = p => r.get('/gallery_order', {params: p})
@@ -53,5 +53,19 @@ export const joinTip = _ => r.get('/index/join_content')
 export const yuepaiTip = _ => r.get('/index/yuepai_content')
 export const cooperationTip = _ => r.get('/index/cooperation_content')
 
-//with-draw
 export const withdraw = p => r.post('/user_deposit/apply', p)
+export const moneyDetail = p => r.get('/user_deposit/moneydetail', {params: p})
+export const scoreDetail = p => r.get('/user_deposit/scoredetail', {params: p})
+
+//
+export const myTeam = p => r.get('/user/teaminfo', {params: p})
+
+// inedx
+export const getBanner = _ => r.get('/index/banner')
+export const getIndexPhoto = p => r.get('/index/indexgallery', {params: p})
+
+export const qiniuConfig = _ => r.get('/common/config')
+
+export const otherUser = p => r.get('/index/userpage', {params: p})
+
+export const ad = _ => r.get('/index/scroll')

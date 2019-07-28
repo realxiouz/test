@@ -216,6 +216,33 @@ const router = new Router({
         title: '提现',
         auth: true
       }
+    },
+    {
+      path: '/success',
+      name: 'Success',
+      component: _ => import('@/pages/Success'),
+      meta: {
+        title: '成功',
+        auth: true
+      }
+    },
+    {
+      path: '/money-detail',
+      name: 'MoneyDetail',
+      component: _ => import('@/pages/MoneyDetail'),
+      meta: {
+        title: '余额明细',
+        auth: true
+      }
+    },
+    {
+      path: '/score-detail',
+      name: 'ScoreDetail',
+      component: _ => import('@/pages/ScoreDetail'),
+      meta: {
+        title: '余额明细',
+        auth: true
+      }
     }
   ]
 })

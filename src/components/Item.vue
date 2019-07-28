@@ -48,7 +48,7 @@ export default {
       }
     },
     toAuth () {
-      this.$router.push({path: `/user/${this.bean.userId}`})
+      this.$router.push({path: `/user/${this.bean.user_id}`})
     }
   }
 }

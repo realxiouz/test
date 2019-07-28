@@ -7,22 +7,22 @@
     <div>
       <div class="user-header">
         <div class="ava">
-          <img src="http://file.idray.com/Image/Brand/ugirls.jpg!wh50" />
+          <img :src="webHost+userInfo.avatar" />
         </div>
-        <div class="name">{{userInfo.name}}</div>
-        <div class="dis">简介：{{userInfo.dis ? userInfo.dis : '暂无简介'}}</div>
-        <div style="text-align:center">
+        <div class="name">{{userInfo.nickname}}</div>
+        <div class="dis">简介：{{userInfo.bio ? userInfo.bio : '暂无简介'}}</div>
+        <!-- <div style="text-align:center">
           <x-button mini @click.native="handleFollow" :type="userInfo.isFollow ? 'primary': 'default'">{{userInfo.isFollow ? '已关注' : '关注'}}</x-button>
-        </div>
+        </div> -->
       </div>
       <div style="padding: 0px 15px;margin-top:10px">
         <button-tab v-model="tabInx">
-          <button-tab-item>套图{{ userInfo.photoCount }}</button-tab-item>
-          <button-tab-item>视屏{{ userInfo.videoCount }}</button-tab-item>
+          <button-tab-item>套图</button-tab-item>
+          <button-tab-item>视屏</button-tab-item>
         </button-tab>
       </div>
       <div>
-        <item v-for="(i, inx) in list" :key="inx" :bean="i" :type="1" />
+        <item v-for="(i, inx) in list" :key="inx" :bean="i" :type="tabInx+1" />
       </div>
     </div>
   </scroller>
@@ -30,19 +30,16 @@
 
 <script>
 import Item from '@/components/Item'
+import { otherUser } from '@/utils/api'
+import { WEB_HOST } from '@/utils/const'
 
 export default {
   mounted () {
     this.getData()
   },
   data: _ => ({
-    userInfo: {
-      photoCount: 100,
-      videoCount: 30,
-      name: '尤果圈',
-      dis: '我是一个没有感情的杀手',
-      isFollow: false
-    },
+    userInfo: {},
+    webHost: WEB_HOST,
     tabInx: 0,
     list: [],
 
@@ -57,60 +54,38 @@ export default {
         text: '加载中'
       })
       this.isLoading = true
-      let page = resetPage ? 1 : this.page
-      setTimeout(_ => {
-        let data = [
-          {
-            id: 1,
-            title: '花漾写真 [HuaYang] 2019.06.10 VOL.146 王雨纯',
-            src: 'http://file.idray.com/Upload/9900/5299/132051666191572568.jpg!wh400',
-            count: 0,
-            avatar: 'http://file.idray.com//Image/Brand/huayang.jpg!wh50',
-            name: '花漾show',
-            time: '2019-06-10',
-            userId: 12
-          },
-          {
-            id: 2,
-            title: '花漾写真 [HuaYang] 2019.06.10 VOL.146 王雨纯',
-            src: 'http://file.idray.com/Upload/9900/5299/132051666191572568.jpg!wh400',
-            count: 59,
-            avatar: 'http://file.idray.com//Image/Brand/huayang.jpg!wh50',
-            name: '花漾show',
-            time: '2019-06-10',
-            userId: 4
-          },
-          {
-            id: 3,
-            title: '花漾写真 [HuaYang] 2019.06.10 VOL.146 王雨纯',
-            src: 'http://file.idray.com/Upload/9900/5299/132051666191572568.jpg!wh400',
-            count: 0,
-            avatar: 'http://file.idray.com//Image/Brand/huayang.jpg!wh50',
-            name: '花漾show',
-            time: '2019-06-10',
-            userId: 1
-          },
-          {
-            id: 4,
-            title: '花漾写真 [HuaYang] 2019.06.10 VOL.146 王雨纯',
-            src: 'http://file.idray.com/Upload/9900/5299/132051666191572568.jpg!wh400',
-            count: 0,
-            avatar: 'http://file.idray.com//Image/Brand/huayang.jpg!wh50',
-            name: '花漾show',
-            time: '2019-06-10',
-            userId: 2
-          }
-        ]
-        if (page === 1) {
+      if (resetPage) {
+        this.page = 1
+      }
+      let p = {
+        page: this.page,
+        id: this.$route.params.id
+      }
+      otherUser(p).then(r => {
+        let data = r.data
+        if (this.page === 1) {
           this.list = []
+          this.$refs.pv.reset({top: 0})
         }
-        this.list.push(...data)
-        setTimeout(_ => {
+        this.userInfo = r.data.user
+        if (this.tabInx === 0) {
+          this.list.push(...data.gallery)
+          if (!data.gallery.length) {
+            this.isEnd = true
+          }
+        } else if (this.tabInx === 1) {
+          this.list.push(...data.video)
+          if (!data.video.length) {
+            this.isEnd = true
+          }
+        }
+        this.$nextTick(_ => {
           this.$refs.pv.reset()
-        }, 500)
+        })
+      }).finally(_ => {
         this.$vux.loading.hide()
         this.isLoading = false
-      }, 3000)
+      })
     },
 
     handleFollow () {
@@ -123,7 +98,7 @@ export default {
     },
 
     handleMore () {
-      if (!this.isLoading) {
+      if (!this.isLoading && !this.isEnd) {
         this.page++
         this.getData()
       }
@@ -135,6 +110,7 @@ export default {
   watch: {
     tabInx: {
       handler (val) {
+        this.isEnd = false
         this.getData(true)
       }
     }

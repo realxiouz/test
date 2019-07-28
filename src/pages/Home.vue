@@ -1,25 +1,27 @@
 <template>
   <div>
-    <search
-      style="position: fixed;top: 0px; z-index:500"
-      @on-submit="doSearch"
-      @on-cancel="clearSearch"
-      v-model="keyword"
-    />
-    <tab style="position: fixed;top: 44px; z-index:500;left:0;right:0" v-model="tabInx">
-      <!-- <tab-item
-        v-for="(i, inx) in tabs"
-        :key="inx"
-        @on-item-click="handleItemSelect(i)"
-      >{{i.name}}</tab-item> -->
-    </tab>
     <scroller
       lock-x
       @on-scroll-bottom="handleMore"
       ref="pv"
     >
-      <div style="padding: 88px 0 53px 0">
-        xiongdei,来到了home
+      <div style="padding: 0px 0 53px 0">
+        <swiper auto height="200px">
+          <swiper-item class="black" v-for="(i, inx) in banners" :key="inx" @click.native="newPage(i)">
+            <img :src="webHost+i.image" alt="">
+          </swiper-item>
+        </swiper>
+        <grid :show-lr-borders="false" :show-vertical-dividers="false">
+          <grid-item :label="i.label" v-for="(i, inx) in grids" :key="inx">
+            <img class="wh" slot="icon" :src="i.src">
+          </grid-item>
+        </grid>
+        <item
+          v-for="(i, inx) in list"
+          :key="inx"
+          :bean="i"
+          :type="1"
+        />
       </div>
     </scroller>
     <nav-bottom />
@@ -41,8 +43,8 @@ import {
   Tabbar,
   TabbarItem
 } from 'vux'
-import { PHOTOS } from '@/utils/const'
-import { allPhotoTypes, getPhotosByType } from '@/utils/api'
+import { WEB_HOST } from '@/utils/const'
+import { getIndexPhoto, getBanner } from '@/utils/api'
 
 export default {
   components: {
@@ -66,9 +68,16 @@ export default {
 
     tabs: [],
     tabInx: 0,
-    selTabId: '',
+    
+    banners: [],
+    webHost: WEB_HOST,
 
-    keyword: ''
+    grids: [
+      {label: 'heeh', path: '', src: require('../assets/me-active.png')},
+      {label: 'heeh', path: '', src: require('../assets/me-active.png')},
+      {label: 'heeh', path: '', src: require('../assets/me-active.png')},
+      {label: 'heeh', path: '', src: require('../assets/me-active.png')}
+    ]
   }),
   methods: {
     getData (resetPage = false) {
@@ -82,11 +91,9 @@ export default {
       }
       this.$vux.loading.show({text: `加载中...`})
       let p = {
-        categoryId: this.selTabId,
-        page: this.page,
-        keyword: this.keyword
+        page: this.page
       }
-      getPhotosByType(p).then(r => {
+      getIndexPhoto(p).then(r => {
         let data = r.data
         if (this.page === 1) {
           this.list = []
@@ -110,47 +117,28 @@ export default {
         this.getData()
       }
     },
-    doSearch () {
-      this.getData(true)
-    },
-    clearSearch () {
-      this.keyword = ''
-      this.getData(true)
-    },
-    mockData () {
-      let arr = []
-      for (let i = 0; i < 4; i++) {
-        arr.push({
-          id: i + 1,
-          title: '花漾写真 [HuaYang] 2019.06.10 VOL.146 王雨纯',
-          src: PHOTOS[Math.floor(Math.random() * PHOTOS.length)],
-          count: 0,
-          avatar: 'http://file.idray.com//Image/Brand/huayang.jpg!wh50',
-          name: '花漾show',
-          time: '2019-06-10',
-          userId: 12
-        })
-      }
-      return arr
-    },
-    handleItemSelect (i) {
-      this.selTabId = i.id
-    }
-  },
-  watch: {
-    selTabId (val) {
-      if (val) {
-        this.getData(true)
-      }
+    newPage(i) {
+      window.open(i.target , '_blank')
     }
   },
   mounted () {
-    allPhotoTypes().then(r => {
-      this.tabs = r.data
-      if (this.tabs.length) {
-        this.selTabId = this.tabs[0].id
-      }
+    getBanner().then(r => {
+      this.banners = r.data
     })
+    this.getData()
   }
 }
 </script>
+
+<style lang="less" scoped>
+.wh{
+  width: 100%;
+  height: 100%;
+}
+.vux-swiper-item{
+  >img{
+    width: 100%;
+  height: 100%;
+  }
+}
+</style>

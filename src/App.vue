@@ -1,20 +1,22 @@
 <template>
   <div id="app">
-    <keep-alive :exclude="exclude">
+    <!-- <keep-alive :exclude="exclude"> -->
       <router-view></router-view>
-    </keep-alive>
+    <!-- </keep-alive> -->
+    <ad />
   </div>
 </template>
 
 <script>
-import { getInfoByToken } from '@/utils/api'
+import { getInfoByToken, qiniuConfig } from '@/utils/api'
 import { mapState, mapMutations } from 'vuex'
 import { validateToken } from '@/utils/const'
+import Ad from '@/components/Ad'
 
 export default {
   name: 'app',
   data: _ => ({
-    exclude: ['PayResult', 'PhotoDetail', 'Rechange', 'OrderList', 'VideoDetail', 'ArticleDetail', 'MoneyTip']
+    exclude: ['PayResult', 'PhotoDetail', 'Rechange', 'OrderList', 'VideoDetail', 'ArticleDetail', 'MoneyTip', 'MyWallet', 'MoneyDetail', 'ScoreDetail']
   }),
   mounted () {
     if (validateToken(new Date().getTime())) {
@@ -22,12 +24,18 @@ export default {
         this.setUser(r.data)
       })
     }
+    qiniuConfig().then(r => {
+      
+    })
   },
   computed: {
     ...mapState(['user'])
   },
   methods: {
     ...mapMutations(['setUser'])
+  },
+  components: {
+    Ad
   }
 }
 </script>

@@ -5,7 +5,9 @@ import App from './App'
 import router from '@/router'
 import store from '@/store'
 
-import { Search, Previewer, Alert, XButton, LoadingPlugin, Scroller, ToastPlugin, ButtonTab, ButtonTabItem, Loading, XTextarea, Tab, TabItem, Tabbar, TabbarItem, Card, Divider, Checker, CheckerItem, Msg, Box, Group, Cell, Badge, AlertPlugin, Confirm, Qrcode, XInput, XNumber, Range, XHeader, Icon, ConfirmPlugin, PopupPicker } from 'vux'
+import { Search, Previewer, Alert, XButton, LoadingPlugin, Scroller, ToastPlugin, ButtonTab, ButtonTabItem, Loading, XTextarea, Tab, TabItem, Tabbar, TabbarItem, Card, Divider, Checker, CheckerItem, Msg, Box, Group, Cell, Badge, AlertPlugin, Confirm, Qrcode, XInput, XNumber, Range, XHeader, Icon, ConfirmPlugin, PopupPicker,
+  Swiper, SwiperItem, Grid, GridItem, XDialog
+} from 'vux'
 
 Vue.use(LoadingPlugin)
 Vue.use(ToastPlugin)
@@ -46,7 +48,11 @@ Vue.component('Range', Range)
 Vue.component('XHeader', XHeader)
 Vue.component('Icon', Icon)
 Vue.component('PopupPicker', PopupPicker)
-
+Vue.component('Swiper', Swiper)
+Vue.component('SwiperItem', SwiperItem)
+Vue.component('Grid', Grid)
+Vue.component('GridItem', GridItem)
+Vue.component('XDialog', XDialog)
 
 if (process.env.NODE_ENV === 'development') {
   let VConsole = require('vconsole')

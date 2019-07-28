@@ -1,12 +1,13 @@
 <template>
   <div>
     <scroller lock-x >
-      <div style="padding: 0 0 106px">
+      <div style="padding: 0 0 53px">
         <div class="top" @click="$router.push({name: 'EditProfile'})">
           <div class="ava-wrap">
             <img :src="user.avatar&&user.avatar.startsWith('data:image')?user.avatar:webHost+user.avatar">
           </div>
           <div class="name">{{user.nickname||user.mobile}}</div>
+          <div>{{user.level == 1 ? '(合伙人)':'(普通会员)成为合伙人?)'}}</div>
         </div>
         <div class="f3">
           <div class="item" @click="$router.push('/money-tip/0')">赚钱秘籍</div>
@@ -24,7 +25,7 @@
         </box>
       </div>
     </scroller>
-    <div class="card-charge">
+    <!-- <div class="card-charge">
       <div class="card-item">
         <div class="content">
           <img src="../assets/card.png" alt="">
@@ -43,7 +44,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <nav-bottom />
   </div>
 </template>
@@ -77,8 +78,8 @@ export default {
           text: '我的钱包',
           children: [
             {title: '钱包金币', src: require('../assets/card.png'), link: '/my-wallet'},
-            {title: '钱包资金', src: require('../assets/code.png'), link: '', des: '(100元倍数可提现)'},
-            {title: '钱包明细', src: require('../assets/order.png'), link: ''}
+            // {title: '钱包资金', src: require('../assets/code.png'), link: '', des: '(100元倍数可提现)'},
+            {title: '我的订单', src: require('../assets/order.png'), link: '/my-order'}
           ]
         },
         {

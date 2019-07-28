@@ -35,7 +35,7 @@
     />
     <x-input
       title="支付宝账号"
-      v-model="formBean.ali_account"
+      v-model="formBean.alipay_account"
       placeholder="输入支付宝账号"
       text-align="right"
     />
@@ -64,7 +64,9 @@ export default {
         username: data.username,
         nickname: data.nickname,
         avatar: data.avatar,
-        bio: '这个人很懒,什么都没留下'
+        bio: data.bio,
+        wechat_account: data.wechat_account,
+        alipay_account: data.alipay_account
       }
     }
   },

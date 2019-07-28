@@ -25,7 +25,7 @@ export const VIDEOS = [
   'http://file.idray.com/Upload/9930/2151/131710385611432607.jpg'
 ]
 
-export const WEB_HOST = 'http://wcwadmin.51dreaming.com'
+export const WEB_HOST = 'http://tuquanquan.51dreaming.com'
 // 图片上传限制 单位:Mb
 export const MAX_SIZE_FOR_PHOTO = 8
 
