@@ -46,7 +46,7 @@ import {
   Tabbar,
   TabbarItem
 } from 'vux'
-import { allPhotoTypes, getPhotosByType } from '@/utils/api'
+import { getPhotosByType } from '@/utils/api'
 
 export default {
   components: {

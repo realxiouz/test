@@ -12,8 +12,8 @@
           </swiper-item>
         </swiper>
         <grid :show-lr-borders="false" :show-vertical-dividers="false">
-          <grid-item :label="i.label" v-for="(i, inx) in grids" :key="inx">
-            <img class="wh" slot="icon" :src="i.src">
+          <grid-item :label="i.label" v-for="(i, inx) in grids" :key="inx" style>
+            <img slot="icon" :src="i.src" @click="handleClick(i, inx)">
           </grid-item>
         </grid>
         <item
@@ -68,15 +68,15 @@ export default {
 
     tabs: [],
     tabInx: 0,
-    
+
     banners: [],
     webHost: WEB_HOST,
 
     grids: [
-      {label: 'heeh', path: '', src: require('../assets/me-active.png')},
-      {label: 'heeh', path: '', src: require('../assets/me-active.png')},
-      {label: 'heeh', path: '', src: require('../assets/me-active.png')},
-      {label: 'heeh', path: '', src: require('../assets/me-active.png')}
+      {label: '赚钱秘籍', path: '/money-tip/0', src: require('../assets/tips.png')},
+      {label: '成为合伙人', path: '', src: require('../assets/members.png')},
+      {label: '积分商城', path: '/goods', src: require('../assets/shop.png')},
+      {label: '客服中心', path: '', src: require('../assets/kefu.png')}
     ]
   }),
   methods: {
@@ -117,8 +117,21 @@ export default {
         this.getData()
       }
     },
-    newPage(i) {
-      window.open(i.target , '_blank')
+    newPage (i) {
+      window.open(i.target, '_blank')
+    },
+    handleClick (i, inx) {
+      switch (inx) {
+        case 0:
+        case 2:
+          this.$router.push(i.path)
+          break
+        case 3:
+          window.location.href = 'tel:10086'
+          break
+        default:
+          break
+      }
     }
   },
   mounted () {
@@ -142,3 +155,4 @@ export default {
   }
 }
 </style>
+

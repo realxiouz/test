@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-html="tip" ref="tip"></div>
+    <div v-html="tip" ref="tip" style="padding:10px"></div>
     <box gap="10px 10px">
       <x-button type="primary" link="">去赚钱</x-button>
     </box>

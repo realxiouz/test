@@ -25,7 +25,7 @@ export default {
       })
     }
     qiniuConfig().then(r => {
-      
+
     })
   },
   computed: {
@@ -45,5 +45,15 @@ export default {
 @import '~vux/src/styles/1px.less';
 body {
   background-color: #fbf9fe;
+}
+
+.weui-grid__icon{
+  width: 48px !important;
+  height: 48px !important;
+  margin: 0 auto;
+}
+
+.vux-no-group-title{
+  margin-top: 0 !important;
 }
 </style>

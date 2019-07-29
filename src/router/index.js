@@ -243,6 +243,15 @@ const router = new Router({
         title: '余额明细',
         auth: true
       }
+    },
+    {
+      path: '/goods',
+      name: 'Goods',
+      component: _ => import('@/pages/Goods'),
+      meta: {
+        title: '积分商城',
+        auth: true
+      }
     }
   ]
 })

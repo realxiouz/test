@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    data: _ => ({
+  data: _ => ({
     title: '申请已提交',
     description: '等待后台审核',
     buttons: [

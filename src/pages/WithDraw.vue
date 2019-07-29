@@ -17,60 +17,60 @@
 import { withdraw } from '@/utils/api'
 import { mapState } from 'vuex'
 export default {
-    data() {
-        return {
-            formBean: {
-                money: 10,
-                channel: '1', //1:wechat 2：ali
-            },
-            channels: 
-            [
-                [
-                    '微信账号', '支付宝账号'
-                ]
-            ],
-            val: ['微信账号'],
-        }
-    },
-    computed: {
-        ...mapState(['user']),
-        maxCount() {
-            return parseInt(this.user.money/10)*10
-        }
-    },
-    methods: {
-        handleOk() {
-            if (this.formBean.money > this.maxCount) {
-                this.$vux.toast.text('超过提现上限')
-                return 
-            }
-            if (!this.user.wechat_account && this.formBean.channel == '1') {
-                this.$vux.alert.show({
-                    title: '微信账号还未完善',
-                    onHide : _ => {
-                        this.$router.push('/edit-profile')
-                    }
-                })
-                return
-            }
-            if (!this.user.alipay_account && this.formBean.channel == '2') {
-                this.$vux.alert.show({
-                    title: '支付宝账号还未完善',
-                    onHide : _ => {
-                        this.$router.push('/edit-profile')
-                    }
-                })
-                return
-            }
-            withdraw(this.formBean).then(r => {
-                this.$router.push('/success')
-            }) 
-        },
-        handleChange(val) {
-            // console.log('val change', val)
-            let t = val[0]
-            this.formBean.channel = t === '微信账号' ? '1' : '2'
-        }
+  data () {
+    return {
+      formBean: {
+        money: 10,
+        channel: '1'
+      },
+      channels:
+      [
+        [
+          '微信账号', '支付宝账号'
+        ]
+      ],
+      val: ['微信账号']
     }
+  },
+  computed: {
+    ...mapState(['user']),
+    maxCount () {
+      return parseInt(this.user.money / 10) * 10
+    }
+  },
+  methods: {
+    handleOk () {
+      if (this.formBean.money > this.maxCount) {
+        this.$vux.toast.text('超过提现上限')
+        return
+      }
+      if (!this.user.wechat_account && this.formBean.channel === '1') {
+        this.$vux.alert.show({
+          title: '微信账号还未完善',
+          onHide: _ => {
+            this.$router.push('/edit-profile')
+          }
+        })
+        return
+      }
+      if (!this.user.alipay_account && this.formBean.channel === '2') {
+        this.$vux.alert.show({
+          title: '支付宝账号还未完善',
+          onHide: _ => {
+            this.$router.push('/edit-profile')
+          }
+        })
+        return
+      }
+      withdraw(this.formBean).then(r => {
+        this.$router.push('/success')
+      })
+    },
+    handleChange (val) {
+      // console.log('val change', val)
+      let t = val[0]
+      this.formBean.channel = t === '微信账号' ? '1' : '2'
+    }
+  }
 }
 </script>

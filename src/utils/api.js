@@ -69,3 +69,7 @@ export const qiniuConfig = _ => r.get('/common/config')
 export const otherUser = p => r.get('/index/userpage', {params: p})
 
 export const ad = _ => r.get('/index/scroll')
+
+export const firstCharge = _ => r.get('/user/rechargegetscroll')
+
+export const goodList = p => r.get('/user/goodslist', {params: p})

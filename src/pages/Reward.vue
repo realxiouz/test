@@ -36,7 +36,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { getQrcode } from '@/utils/api'
+import { getQrcode, firstCharge } from '@/utils/api'
 import { WEB_HOST } from '@/utils/const'
 
 export default {
@@ -48,10 +48,15 @@ export default {
       })
     },
     handleRecharge () {
-      this.$vux.alert.show({
-        title: '提示',
-        content: '您还没有完成任务，稍后再来领取！'
+      firstCharge().then(r => {
+        this.$vux.toast.text(r.msg)
+      }).catch(e => {
+        this.$router.push('/recharge')
       })
+      // this.$vux.alert.show({
+      //   title: '提示',
+      //   content: '您还没有完成任务，稍后再来领取！'
+      // })
     },
     handleQrcode () {
       this.qrCodeDialog = true

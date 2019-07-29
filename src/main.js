@@ -5,6 +5,8 @@ import App from './App'
 import router from '@/router'
 import store from '@/store'
 
+import '@/assets/css/main.css'
+
 import { Search, Previewer, Alert, XButton, LoadingPlugin, Scroller, ToastPlugin, ButtonTab, ButtonTabItem, Loading, XTextarea, Tab, TabItem, Tabbar, TabbarItem, Card, Divider, Checker, CheckerItem, Msg, Box, Group, Cell, Badge, AlertPlugin, Confirm, Qrcode, XInput, XNumber, Range, XHeader, Icon, ConfirmPlugin, PopupPicker,
   Swiper, SwiperItem, Grid, GridItem, XDialog
 } from 'vux'

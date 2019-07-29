@@ -77,7 +77,7 @@ export default {
         })
       })
     },
-    shareWechat(){
+    shareWechat () {
       this.showToast = true
     }
   }
@@ -172,7 +172,7 @@ export default {
                 margin-right: 10px;
               }
       }
-      
+
     }
   }
 </style>

@@ -71,21 +71,21 @@ export default {
       switch (this.selInx) {
         case 0:
           p.today = true
-          break;
+          break
         case 1:
           p.yesterday = true
-          break;
+          break
         case 2:
           p.lastThreeDays = true
-          break;
+          break
         case 3:
           p.lastSevenDays = true
-          break;
+          break
         case 4:
           p.all = true
-          break;
+          break
         default:
-          break;
+          break
       }
       myTeam(p).then(r => {
         let data = r.data.list
@@ -108,12 +108,12 @@ export default {
         this.page++
         this.getData()
       }
-    },
+    }
   },
   components: {
     QTag
   },
-  mounted() {
+  mounted () {
     this.getData()
   }
 }
