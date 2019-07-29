@@ -23,7 +23,7 @@
           v-for="(i, inx) in list"
           :key="inx"
           :bean="i"
-          :type="i.thumbimage ? 1 : 0"
+          :type="3"
         />
       </div>
     </scroller>

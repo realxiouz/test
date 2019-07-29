@@ -5,19 +5,21 @@
       @on-scroll-bottom="handleMore"
       ref="pv"
     >
-      <div style="padding:10px" class="flex flex-wrap justify-between">
+      <div style="padding:10px" class="flex flex-wrap">
         <div
           v-for="(i, inx) in list"
           :key="inx"
           class="good"
         >
-          <img :src="webHost+i.images" alt="">
-          <div>
-            <span class="cu-tag round bg-blue">{{i.goods_name}}</span>
+          <div class="img-wrap">
+            <img :src="webHost+i.images" alt="">
+          </div>
+          <div class="title">
+            <!-- <span class="cu-tag round bg-blue">{{i.goods_name}}</span> -->
             {{i.content}}
           </div>
-          <div class="flex">
-            <div>金币: {{i.integral}}</div>
+          <div class="flex justify-between">
+            <div class="price">￥{{i.integral}}</div>
             <div>库存: {{i.num}}</div>
           </div>
         </div>
@@ -84,10 +86,36 @@ export default {
 
 <style lang="less" scoped>
 .good{
-  width: 45%;
-  >img{
-    width: 100%
+  width: 48%;
+  padding-bottom: 20px;
+  &:nth-child(2n+1){
+    margin-right: 4%;
   }
+  .img-wrap{
+    width: 100%;
+    height: 165px;
+    border-radius: 3px;
+    overflow: hidden;
+    >img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+}
+.price{
+  font-size: 16px;
+  color: #fa436a;
+  line-height: 1;
+}
+.title{
+  font-size: 16px;
+  color: #303133;
+  line-height: 40px;
+      text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    overflow: hidden;
 }
 </style>
 

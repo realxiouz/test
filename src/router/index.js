@@ -115,6 +115,13 @@ const router = new Router({
       }
     },
     {
+      path: '/pay-member-result/:id',
+      name: 'PayMemberResult',
+      component: _ => import('@/pages/PayMemberResult'),
+      meta: {
+      }
+    },
+    {
       path: '/reward',
       name: 'Reward',
       component: _ => import('@/pages/Reward'),
@@ -250,6 +257,24 @@ const router = new Router({
       component: _ => import('@/pages/Goods'),
       meta: {
         title: '积分商城',
+        auth: true
+      }
+    },
+    {
+      path: '/member',
+      name: 'Member',
+      component: _ => import('@/pages/member'),
+      meta: {
+        title: '成为合伙人',
+        auth: true
+      }
+    },
+    {
+      path: '/area-list',
+      name: 'AreaList',
+      component: _ => import('@/pages/AreaList'),
+      meta: {
+        title: '收货地址',
         auth: true
       }
     }

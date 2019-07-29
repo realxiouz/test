@@ -74,7 +74,7 @@ export default {
 
     grids: [
       {label: '赚钱秘籍', path: '/money-tip/0', src: require('../assets/tips.png')},
-      {label: '成为合伙人', path: '', src: require('../assets/members.png')},
+      {label: '成为合伙人', path: '/member', src: require('../assets/members.png')},
       {label: '积分商城', path: '/goods', src: require('../assets/shop.png')},
       {label: '客服中心', path: '', src: require('../assets/kefu.png')}
     ]
@@ -124,6 +124,9 @@ export default {
       switch (inx) {
         case 0:
         case 2:
+          this.$router.push(i.path)
+          break
+        case 1:
           this.$router.push(i.path)
           break
         case 3:

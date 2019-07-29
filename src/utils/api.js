@@ -73,3 +73,8 @@ export const ad = _ => r.get('/index/scroll')
 export const firstCharge = _ => r.get('/user/rechargegetscroll')
 
 export const goodList = p => r.get('/user/goodslist', {params: p})
+
+export const payMemberData = p => r.post('/member/order', p)
+export const checkMemberPay = p => r.get('/member/querypay', {params: p})
+
+export const getArea = p => r.get('/user/area', {params: p})

@@ -42,7 +42,7 @@
 
     <x-dialog v-model="showToast" class="dialog-demo">
         <div style="padding:15px; height:200px">
-          <img style="width:100%;height:100%" src="http://tuquanquan.51dreaming.com/uploads/20190715/2a9d592f5aae18f17aeda4e53c7d70f7.jpg">
+          <img style="width:100%;height:100%" :src="webHost+article.qrcodeimage">
         </div>
         <div @click="showToast=false">
           <span class="vux-close"></span>

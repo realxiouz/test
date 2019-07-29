@@ -5,28 +5,59 @@
       <div class="info">
         <div class="item-tag" v-if="bean.is_top">置顶</div>
         <div class="item-tag" v-if="bean.is_hot">热</div>
-        <div class="auth">{{bean.auth}}</div>
+        <div class="auth">{{bean.username}}</div>
         <div class="v-count">浏览量&nbsp;{{bean.pv}}</div>
         <div class="c-time">{{moment().from(bean.createtime*1000)}}</div>
       </div>
     </div>
-    <div v-if="type===1" class="item type1">
-      <div class="left">
+    <div v-if="type===1" class="item type0">
+      <div class="title">{{bean.title}}</div>
+      <div class="info justify-between">
+        <div class="flex">
+          <div class="auth">{{bean.username}}</div>
+          <div class="v-count">浏览量&nbsp;{{bean.pv}}</div>
+          <div class="c-time">{{moment().from(bean.createtime*1000)}}</div>
+        </div>
+        <div style="color:red">立即分享赚: {{bean.shareprice}}元</div>
+      </div>
+      <div style="height:160px;margin-top:10px;">
+        <img :src="webHost+bean.thumbimage" style="width:100%;height:100%"/>
+      </div>
+      <!-- <div class="left">
         <div class="title">{{bean.title}}</div>
         <div class="info">
           <div class="item-tag" v-if="bean.is_top">置顶</div>
           <div class="item-tag" v-if="bean.is_hot">热</div>
           <div class="auth">{{bean.auth}}</div>
           <div class="v-count">浏览量&nbsp;{{bean.pv}}</div>
-          <!-- <div class="c-time">{{moment().from(bean.createtime*1000)}}</div> -->
+          <div class="c-time">{{moment().from(bean.createtime*1000)}}</div>
         </div>
       </div>
       <div class="right">
         <img :src="webHost+bean.thumbimage" alt />
-      </div>
+      </div> -->
     </div>
     <div v-if="type===3" class="item type3">
       <div class="title">{{bean.title}}</div>
+      <div class="info justify-between" style="margin-bottom:10px">
+        <div class="flex">
+          <div class="auth">{{bean.username}}</div>
+          <div class="v-count">浏览量&nbsp;{{bean.pv}}</div>
+          <div class="c-time">{{moment().from(bean.createtime*1000)}}</div>
+        </div>
+        <div style="color:red">立即分享赚: {{bean.shareprice}}元</div>
+      </div>
+        <ul class="imgs">
+          <li style="padding-right: 2px;">
+            <img :src="webHost+bean.thumbimages">
+          </li>
+          <li>
+            <img :src="webHost+bean.thumbimages">
+          </li>
+          <li style="padding-left: 2px;">
+            <img :src="webHost+bean.thumbimages">
+          </li>
+        </ul>
     </div>
   </div>
 </template>
@@ -85,30 +116,30 @@ export default {
     //   }
     // }
   }
-  .type1 {
-    display: flex;
-    .left {
-      width: 67%;
-      padding-right: 12px;
-      .title{
-        line-height: 21px;
-        font-size: 17px;
-        max-height: 63px;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
-        overflow: hidden;
-      }
-    }
-    .right {
-      width: 33%;
-      height: 83px;
-      > img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
+  // .type1 {
+  //   display: flex;
+  //   .left {
+  //     width: 67%;
+  //     padding-right: 12px;
+  //     .title{
+  //       line-height: 21px;
+  //       font-size: 17px;
+  //       max-height: 63px;
+  //       display: -webkit-box;
+  //       -webkit-box-orient: vertical;
+  //       -webkit-line-clamp: 3;
+  //       overflow: hidden;
+  //     }
+  //   }
+  //   .right {
+  //     width: 33%;
+  //     height: 83px;
+  //     > img {
+  //       width: 100%;
+  //       height: 100%;
+  //     }
+  //   }
+  // }
 }
 
 .info {
@@ -125,7 +156,30 @@ export default {
     font-size: 9px;
   }
   > div {
-    margin-right: 5px;
+    >div{
+      margin-right: 5px;
+    }
+  }
+}
+
+.imgs{
+  margin-top:10px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  font-size: 0;
+  text-align: center;
+  li{
+    display: inline-block;
+    overflow: hidden;
+    width: 33.3%;
+    box-sizing: border-box;
+    height: 80px;
+    >img{
+      width:100%;
+      height:100%;
+    }
   }
 }
 </style>

@@ -9,7 +9,7 @@
             />
           </div>
           <div class="name">{{user.nickname||user.mobile}}</div>
-          <div>{{user.level == 1 ? '(合伙人)':'(普通会员)成为合伙人?)'}}</div>
+          <div @click.stop="$router.push('/member')">{{user.level == 1 ? '(合伙人)':'(普通会员)成为合伙人?'}}</div>
         </div>
         <div class="f3">
           <div class="item" @click="$router.push('/money-tip/0')">赚钱秘籍</div>
@@ -102,7 +102,7 @@ export default {
             {
               title: '兑换礼品',
               src: require('../assets/order.png'),
-              link: '',
+              link: '/goods',
               des: '(金币可兑换礼品)'
             }
           ]
