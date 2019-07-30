@@ -14,7 +14,7 @@
             :title="i.memo"
             :inline-desc="moment(i.createtime*1000).format('YYYY-MM-DD hh:mm')"
           >
-            <span class="weight" :style="`color: ${i.after - i.before >= 0 ?'green':'red'}`">{{i.after - i.before>0?"+":'-'}}{{i.after - i.before}}</span>
+            <span class="weight" :style="`color: ${i.after - i.before >= 0 ?'green':'red'}`">{{i.after - i.before>0?"+":''}}{{i.after - i.before}}</span>
           </cell>
         </group>
       </div>

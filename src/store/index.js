@@ -10,7 +10,8 @@ export default new Vuex.Store({
       copyRight: 'Copyright © 2019 fenun.cn'
     },
     user: {},
-    redirectPath: ''
+    redirectPath: '',
+    goods: {}
   },
   mutations: {
     setRedirectPath (store, path) {
@@ -18,6 +19,9 @@ export default new Vuex.Store({
     },
     setUser (store, user) {
       store.user = user
+    },
+    setGoods (store, goods) {
+      store.goods = goods
     }
   }
 })

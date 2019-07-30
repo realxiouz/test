@@ -3,7 +3,7 @@
     <box gap="40px">
       <span style="font-size: 20px;font-weight: 400;">成为合伙人</span>
     </box>
-    
+
     <group>
         <x-input title="充值" disabled :value="1680" text-align="right"/>
     </group>

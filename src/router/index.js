@@ -277,6 +277,15 @@ const router = new Router({
         title: '收货地址',
         auth: true
       }
+    },
+    {
+      path: '/goods-order',
+      name: 'GoodsOrder',
+      component: _ => import('@/pages/GoodsOrder'),
+      meta: {
+        title: '兑换商品',
+        auth: true
+      }
     }
   ]
 })

@@ -1,27 +1,33 @@
 <template>
   <div>
+    <div class="wtf">
+      积分商城
+    </div>
     <scroller
       lock-x
       @on-scroll-bottom="handleMore"
       ref="pv"
     >
-      <div style="padding:10px" class="flex flex-wrap">
+      <div style="padding:58px 10px 10px" class="flex flex-wrap">
         <div
           v-for="(i, inx) in list"
           :key="inx"
           class="good"
+          @click="toOrder(i)"
         >
           <div class="img-wrap">
             <img :src="webHost+i.images" alt="">
           </div>
-          <div class="title">
-            <!-- <span class="cu-tag round bg-blue">{{i.goods_name}}</span> -->
-            {{i.content}}
+          <div style="padding:8px;">
+            <div class="title">
+            {{i.goods_name}}
+            </div>
+            <div class="flex justify-between align-center">
+              <div class="price">{{i.integral}}金币</div>
+              <div class="price dh">立即兑换</div>
+            </div>
           </div>
-          <div class="flex justify-between">
-            <div class="price">￥{{i.integral}}</div>
-            <div>库存: {{i.num}}</div>
-          </div>
+
         </div>
       </div>
     </scroller>
@@ -32,6 +38,7 @@
 import { goodList } from '@/utils/api'
 import moment from 'moment'
 import { WEB_HOST } from '@/utils/const'
+import { mapMutations } from 'vuex'
 
 export default {
   mounted () {
@@ -46,6 +53,7 @@ export default {
     webHost: WEB_HOST
   }),
   methods: {
+    ...mapMutations(['setGoods']),
     getData (resetPage = false) {
       if (this.isLoading) {
         return
@@ -65,7 +73,7 @@ export default {
           this.list = []
           this.$refs.pv.reset({top: 0})
         }
-        this.list.push(...data, ...data, ...data, ...data, ...data)
+        this.list.push(...data)
         if (!data.length) {
           this.isEnd = true
         }
@@ -79,15 +87,41 @@ export default {
         this.page++
         this.getData()
       }
+    },
+    toOrder (i) {
+      this.setGoods(i)
+      this.$router.push('/goods-order')
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
+.wtf{
+  padding: 10px 15px;
+  font-weight: bold;
+  font-size: 18px;
+  background: #fff;
+  position: fixed;
+  top:0;
+  left:0;
+  right: 0;
+  z-index: 1;
+  &::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 6px;
+    background: #0081ff;
+    height: 20px;
+  }
+}
 .good{
   width: 48%;
-  padding-bottom: 20px;
+  background: #fff;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
   &:nth-child(2n+1){
     margin-right: 4%;
   }
@@ -101,21 +135,27 @@ export default {
       height: 100%;
     }
   }
-  
+
 }
 .price{
-  font-size: 16px;
-  color: #fa436a;
+  font-size: 12px;
+  color: white;
   line-height: 1;
+  background: red;
+  padding: 2px 4px;
+  &.dh{
+    background: #39b54a;
+  }
 }
 .title{
   font-size: 16px;
   color: #303133;
-  line-height: 40px;
-      text-overflow: ellipsis;
+  line-height: 20px;
+  text-overflow: ellipsis;
     white-space: nowrap;
     display: block;
     overflow: hidden;
+    margin-bottom:8px;
 }
 </style>
 

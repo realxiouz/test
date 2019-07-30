@@ -78,3 +78,10 @@ export const payMemberData = p => r.post('/member/order', p)
 export const checkMemberPay = p => r.get('/member/querypay', {params: p})
 
 export const getArea = p => r.get('/user/area', {params: p})
+
+export const newAddress = p => r.post('/user/addadress', p)
+export const editAddress = p => r.post('/user/editadress', p)
+export const addressList = _ => r.get('/user/getadresslist')
+export const addressDefault = _ => r.get('/user/getdefaultadress')
+
+export const goodsBuy = p => r.post('/user/buy', p)

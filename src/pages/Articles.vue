@@ -23,7 +23,7 @@
           v-for="(i, inx) in list"
           :key="inx"
           :bean="i"
-          :type="3"
+          :type="i.imgs.length"
         />
       </div>
     </scroller>
@@ -95,7 +95,11 @@ export default {
           this.list = []
           this.$refs.pv.reset({top: 0})
         }
-        this.list.push(...data)
+        let arr = data.map(i => {
+          i.imgs = i.thumbimages.split(',')
+          return i
+        })
+        this.list.push(...arr)
         if (!data.length) {
           this.isEnd = true
         }

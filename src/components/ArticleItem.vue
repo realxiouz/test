@@ -10,7 +10,7 @@
         <div class="c-time">{{moment().from(bean.createtime*1000)}}</div>
       </div>
     </div>
-    <div v-if="type===1" class="item type0">
+    <div v-if="type===1||type===2" class="item type0">
       <div class="title">{{bean.title}}</div>
       <div class="info justify-between">
         <div class="flex">
@@ -21,7 +21,7 @@
         <div style="color:red">立即分享赚: {{bean.shareprice}}元</div>
       </div>
       <div style="height:160px;margin-top:10px;">
-        <img :src="webHost+bean.thumbimage" style="width:100%;height:100%"/>
+        <img :src="webHost+bean.imgs[0]" style="width:100%;height:100%"/>
       </div>
       <!-- <div class="left">
         <div class="title">{{bean.title}}</div>
@@ -49,13 +49,13 @@
       </div>
         <ul class="imgs">
           <li style="padding-right: 2px;">
-            <img :src="webHost+bean.thumbimages">
+            <img :src="webHost+bean.imgs[0]">
           </li>
           <li>
-            <img :src="webHost+bean.thumbimages">
+            <img :src="webHost+bean.imgs[1]">
           </li>
           <li style="padding-left: 2px;">
-            <img :src="webHost+bean.thumbimages">
+            <img :src="webHost+bean.imgs[2]">
           </li>
         </ul>
     </div>
