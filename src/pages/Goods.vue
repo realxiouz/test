@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="wtf">
-      积分商城
+      金币商城
     </div>
     <scroller
       lock-x

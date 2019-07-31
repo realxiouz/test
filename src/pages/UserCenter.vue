@@ -16,14 +16,14 @@
           <div class="item" @click="$router.push('/qrcode')">我的二维码</div>
           <div class="item" @click="$router.push('/my-group')">我的团队</div>
         </div>
-        <group v-for="(item, index) in groups" :key="`group${index}`">
+        <group v-for="(item, index) in groups" :key="`group${index}`" class="vux-1px-b">
           <div
             slot="title"
             class="weui-cell_access"
             style="display: flex;justify-content: space-between;padding: 10px 15px;"
             @click="item.show = !item.show"
           >
-            <span>{{item.text}}</span>
+            <div class="flex"><img width="20" style="display:block;margin-right:5px;" src="../assets/wenjian.png" />{{item.text}}</div>
             <div :class="!item.show ?'bottom1' :'top1'"></div>
           </div>
           <template v-if="item.show">
@@ -35,35 +35,35 @@
               :link="i.link"
             >
               <span slot="after-title" v-if="i.des" style="font-size:14px;color:gray">{{i.des}}</span>
-              <img slot="icon" width="20" style="display:block;margin-right:5px;" :src="i.src" />
+              <!-- <img slot="icon" width="20" style="display:block;margin-right:5px;" :src="i.src" /> -->
             </cell>
           </template>
         </group>
+        <div class="card-charge" style="margin-top:20px">
+          <div class="card-item vux-1px-r">
+            <div class="content">
+              <img src="../assets/card.png" alt="">
+              <div>
+                <div class="title">加油卡充值</div>
+                <div class="sub-title">8.8折起</div>
+              </div>
+            </div>
+          </div>
+          <div class="card-item">
+            <div class="content">
+              <img src="../assets/card.png" alt="">
+              <div>
+                <div class="title">话费充值</div>
+                <div class="sub-title">9折起</div>
+              </div>
+            </div>
+          </div>
+        </div>
         <box gap="20px 10px">
           <x-button @click.native="handleLogout" type="warn">退出登录</x-button>
         </box>
       </div>
     </scroller>
-    <!-- <div class="card-charge">
-      <div class="card-item">
-        <div class="content">
-          <img src="../assets/card.png" alt="">
-          <div>
-            <div class="title">加油卡充值</div>
-            <div class="sub-title">8.8折起</div>
-          </div>
-        </div>
-      </div>
-      <div class="card-item">
-        <div class="content">
-          <img src="../assets/card.png" alt="">
-          <div>
-            <div class="title">话费充值</div>
-            <div class="sub-title">9折起</div>
-          </div>
-        </div>
-      </div>
-    </div>-->
     <nav-bottom />
   </div>
 </template>
@@ -167,25 +167,25 @@ export default {
               link: '/money-tip/7'
             }
           ]
-        },
-        {
-          text: '优惠充值',
-          show: false,
-          children: [
-            {
-              title: '加油卡充值',
-              src: require('../assets/card.png'),
-              link: '/money-tip/5',
-              des: '(8.8折起)'
-            },
-            {
-              title: '话费充值',
-              src: require('../assets/code.png'),
-              link: '/money-tip/6',
-              des: '(9折起)'
-            }
-          ]
         }
+        // {
+        //   text: '优惠充值',
+        //   show: false,
+        //   children: [
+        //     {
+        //       title: '加油卡充值',
+        //       src: require('../assets/card.png'),
+        //       link: '/money-tip/5',
+        //       des: '(8.8折起)'
+        //     },
+        //     {
+        //       title: '话费充值',
+        //       src: require('../assets/code.png'),
+        //       link: '/money-tip/6',
+        //       des: '(9折起)'
+        //     }
+        //   ]
+        // }
       ]
     }
   },
@@ -247,9 +247,6 @@ export default {
 
 .card-charge {
   display: flex;
-  position: absolute;
-  z-index: 500;
-  bottom: 53px;
   width: 100%;
   background-color: #ffffff;
   height: 53px;

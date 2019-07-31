@@ -7,7 +7,7 @@
         <div class="cu-tag bg-cyan" style="padding: 4px 8px;font-size:12px;margin-bottom:10px">{{goods.goods_name}}</div>
         <div class="flex justify-between" style="align-items: flex-end;">
           <div>库存: {{goods.num}}</div>
-          <div>积分: <span class="text-bold text-red" style="font-size:20px">{{goods.integral}}</span></div>
+          <div>金币: <span class="text-bold text-red" style="font-size:20px">{{goods.integral}}</span></div>
         </div>
       </div>
     </box>

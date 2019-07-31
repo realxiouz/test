@@ -6,19 +6,19 @@
       @on-cancel="clearSearch"
       v-model="keyword"
     />
-    <!-- <tab style="position: fixed;top: 44px; z-index:500;left:0;right:0" v-model="tabInx">
+    <tab style="position: fixed;top: 44px; z-index:500;left:0;right:0" v-model="tabInx">
       <tab-item
         v-for="(i, inx) in tabs"
         :key="inx"
         @on-item-click="handleItemSelect(i)"
       >{{i.name}}</tab-item>
-    </tab> -->
+    </tab>
     <scroller
       lock-x
       @on-scroll-bottom="handleMore"
       ref="pv"
     >
-      <div style="padding: 44px 0 53px 0">
+      <div style="padding: 88px 0 53px 0">
         <item
           v-for="(i, inx) in list"
           :key="inx"
@@ -46,7 +46,7 @@ import {
   Tabbar,
   TabbarItem
 } from 'vux'
-import { getPhotosByType } from '@/utils/api'
+import { getPhotosByType, allPhotoTypes } from '@/utils/api'
 
 export default {
   components: {
@@ -86,7 +86,7 @@ export default {
       }
       this.$vux.loading.show({text: `加载中...`})
       let p = {
-        // categoryId: this.selTabId,
+        categoryId: this.selTabId,
         page: this.page,
         keyword: this.keyword
       }
@@ -126,20 +126,20 @@ export default {
     }
   },
   watch: {
-    // selTabId (val) {
-    //   if (val) {
-    //     this.getData(true)
-    //   }
-    // }
+    selTabId (val) {
+      if (val) {
+        this.getData(true)
+      }
+    }
   },
   mounted () {
-    // allPhotoTypes().then(r => {
-    //   this.tabs = r.data
-    //   if (this.tabs.length) {
-    //     this.selTabId = this.tabs[0].id
-    //   }
-    // })
-    this.getData(true)
+    allPhotoTypes().then(r => {
+      this.tabs = r.data
+      if (this.tabs.length) {
+        this.selTabId = this.tabs[0].id
+      }
+    })
+    // this.getData(true)
   }
 }
 </script>

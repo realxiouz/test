@@ -27,7 +27,7 @@ export default {
 <style lang="less" scoped>
 .q-bar{
   display: flex;
-  position: absolute;
+  position: fixed;
   z-index: 500;
   bottom: 0;
   width: 100%;

@@ -1,13 +1,20 @@
 <template>
   <div>
-    <div class="ad-wrap" v-if="show">
+    <div class="ad-wrap" v-if="show" :style="bottom">
       <div class="ad-content">
-        <swiper auto class="ads" :show-dots="false" :loop="true" height="120px">
+        <swiper :auto="false" class="ads" :show-dots="false" :loop="true" height="120px">
           <swiper-item class="black" v-for="(i, inx) in list" :key="inx" @click.native="newPage(i)">
-            <img :src="webHost+i.image" alt />
+            <div class="ad-detail">
+              <img :src="webHost+i.image">
+              <div>
+                <div class="title">{{i.name}}</div>
+                <div class="des">{{i.description||'暂无描述'}}</div>
+              </div>
+              <div class="see">查看详情</div>
+            </div>
           </swiper-item>
         </swiper>
-        <div class="t">广告</div>
+        <!-- <div class="t">广告</div> -->
         <div class="t close" @click="handleClose">关闭</div>
       </div>
     </div>
@@ -17,18 +24,21 @@
 <script>
 import { ad } from '@/utils/api'
 import { WEB_HOST } from '@/utils/const'
-// import { setTimeout } from 'timers'
 
 export default {
   mounted () {
     ad().then(r => {
       this.list = r.data
     })
+
+    setTimeout(_ => {
+      this.show = true
+    }, 8000)
   },
   data: _ => ({
     list: [],
     webHost: WEB_HOST,
-    show: true
+    show: false
   }),
   methods: {
     newPage (i) {
@@ -39,6 +49,16 @@ export default {
       setTimeout(_ => {
         this.show = true
       }, 60000)
+    }
+  },
+  computed: {
+    bottom () {
+      let arr = ['/home', '/photos', '/articles', '/videos', '/user-center']
+      if (arr.includes(this.$route.path)) {
+        return 'bottom: 53px'
+      } else {
+        return 'bottom: 0'
+      }
     }
   }
 }
@@ -60,9 +80,7 @@ export default {
       padding: 5px 10px;
       bottom: 0px;
       right: 0px;
-      // border: 1px solid gray;
-      // border-radius: 8px;
-      background: rgba(0, 0, 0, 0.5);
+      // background: rgba(0, 0, 0, 0.5);
       color: #fff;
       font-size: 6px;
       &.close {
@@ -74,11 +92,42 @@ export default {
       position: absolute;
       width: 100%;
       height: 100%;
-      img {
-        width: 100%;
-        height: 100%;
-      }
+      
     }
+  }
+}
+
+.ad-detail{
+ width: 100%;
+ height: 100%;
+ display: flex;
+ box-sizing: border-box;
+ padding: 10px;
+ background: rgba(0,0,0,.5);
+  img {
+    width: 100px;
+    height: 100px;
+    margin-right: 16px;
+  }
+  >div{
+    flex: 1;
+    color: #fff;
+    .title{
+      font-weight: bold;
+      font-size: 22px;
+    }
+    .des{
+
+    }
+  }
+  .see{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 2px 6px;
+    background: #0081ff;
+    color: #fff;
+    border-radius: 4px;
   }
 }
 </style>
