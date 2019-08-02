@@ -76,6 +76,94 @@ import { logout } from '@/utils/api'
 import NavBottom from '@/components/NavBar1'
 
 export default {
+  mounted () {
+    if (this.user.level === '0') {
+      this.groups = [
+        {
+          text: '我的账户',
+          show: false,
+          children: [
+            {
+              title: '红包任务',
+              src: require('../assets/card.png'),
+              link: '/reward'
+            },
+            {
+              title: '分享推广',
+              src: require('../assets/code.png'),
+              link: '/qrcode'
+            },
+            {
+              title: '兑换礼品',
+              src: require('../assets/order.png'),
+              link: '/goods',
+              des: '(金币可兑换礼品)'
+            }
+          ]
+        },
+        {
+          text: '我的钱包',
+          show: false,
+          children: [
+            {
+              title: '钱包金币',
+              src: require('../assets/card.png'),
+              link: '/my-wallet'
+            },
+            {
+              title: '我的订单',
+              src: require('../assets/order.png'),
+              link: '/my-order'
+            }
+          ]
+        },
+        {
+          text: '我要赚钱',
+          show: false,
+          children: [
+            {
+              title: '看图/文赚钱',
+              src: require('../assets/card.png'),
+              link: '/money-tip/2'
+            },
+            {
+              title: '投稿赚钱',
+              src: require('../assets/code.png'),
+              link: '/member',
+              des: '(合伙人上传套图)'
+            },
+            {
+              title: '发展新合伙人',
+              src: require('../assets/order.png'),
+              link: '/member'
+            }
+          ]
+        },
+        {
+          text: '我要合作',
+          show: false,
+          children: [
+            {
+              title: '加盟/代理',
+              src: require('../assets/card.png'),
+              link: '/corporate'
+            },
+            {
+              title: '我要约拍',
+              src: require('../assets/code.png'),
+              link: '/corporate',
+              des: '(模特or摄影师)'
+            },
+            {
+              title: '商务合作',
+              src: require('../assets/order.png'),
+              link: '/corporate'
+            }
+          ]
+        }
+      ]
+    }
+  },
   components: {
     Group,
     Cell,
@@ -116,7 +204,6 @@ export default {
               src: require('../assets/card.png'),
               link: '/my-wallet'
             },
-            // {title: '钱包资金', src: require('../assets/code.png'), link: '', des: '(100元倍数可提现)'},
             {
               title: '我的订单',
               src: require('../assets/order.png'),
@@ -142,7 +229,7 @@ export default {
             {
               title: '发展新合伙人',
               src: require('../assets/order.png'),
-              link: '/money-tip/4'
+              link: '/qrcode'
             }
           ]
         },
@@ -153,39 +240,21 @@ export default {
             {
               title: '加盟/代理',
               src: require('../assets/card.png'),
-              link: '/money-tip/5'
+              link: '/corporate'
             },
             {
               title: '我要约拍',
               src: require('../assets/code.png'),
-              link: '/money-tip/6',
+              link: '/corporate',
               des: '(模特or摄影师)'
             },
             {
               title: '商务合作',
               src: require('../assets/order.png'),
-              link: '/money-tip/7'
+              link: '/corporate'
             }
           ]
         }
-        // {
-        //   text: '优惠充值',
-        //   show: false,
-        //   children: [
-        //     {
-        //       title: '加油卡充值',
-        //       src: require('../assets/card.png'),
-        //       link: '/money-tip/5',
-        //       des: '(8.8折起)'
-        //     },
-        //     {
-        //       title: '话费充值',
-        //       src: require('../assets/code.png'),
-        //       link: '/money-tip/6',
-        //       des: '(9折起)'
-        //     }
-        //   ]
-        // }
       ]
     }
   },

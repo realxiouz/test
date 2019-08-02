@@ -18,7 +18,7 @@
           <div class="v-count">浏览量&nbsp;{{bean.pv}}</div>
           <div class="c-time">{{moment().from(bean.createtime*1000)}}</div>
         </div>
-        <div style="color:red">立即分享赚: {{bean.shareprice}}元</div>
+        <div style="color:red">立即分享赚: {{bean.shareprice}}元 共{{bean.sharecount}}次</div>
       </div>
       <div style="height:160px;margin-top:10px;">
         <img :src="webHost+bean.imgs[0]" style="width:100%;height:100%"/>
@@ -45,7 +45,7 @@
           <div class="v-count">浏览量&nbsp;{{bean.pv}}</div>
           <div class="c-time">{{moment().from(bean.createtime*1000)}}</div>
         </div>
-        <div style="color:red">立即分享赚: {{bean.shareprice}}元</div>
+        <div style="color:red">立即分享赚: {{bean.shareprice}}元  共{{bean.sharecount}}次</div>
       </div>
         <ul class="imgs">
           <li style="padding-right: 2px;">

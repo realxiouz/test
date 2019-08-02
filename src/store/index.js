@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     info: {
       webName: '图圈圈',
-      copyRight: 'Copyright © 2019 fenun.cn'
+      copyRight: 'Copyright © 2019 tuquanquan'
     },
     user: {},
     redirectPath: '',

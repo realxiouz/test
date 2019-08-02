@@ -87,3 +87,5 @@ export const addressDefault = _ => r.get('/user/getdefaultadress')
 export const goodsBuy = p => r.post('/user/buy', p)
 
 export const newGally = p => r.post('/gallery/add', p)
+
+export const doApply = p => r.post('/article/share', p)

@@ -286,6 +286,15 @@ const router = new Router({
         title: '兑换商品',
         auth: true
       }
+    },
+    {
+      path: '/corporate',
+      name: 'Corporate',
+      component: _ => import('@/pages/Corporate'),
+      meta: {
+        title: '商务合作',
+        auth: true
+      }
     }
   ]
 })

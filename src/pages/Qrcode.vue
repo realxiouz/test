@@ -35,9 +35,9 @@ export default {
   height: 100vh;
   text-align: center;
   > img{
-    width: 200px;
-    height: 200px;
-    margin-top: 150px;
+    width: 100%;
+    height: auto;
+    margin-top: 80px;
   }
   >div {
     color: #fff;

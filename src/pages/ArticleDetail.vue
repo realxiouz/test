@@ -20,9 +20,9 @@
     <div class="content" v-html="article.content" ref="content"></div>
     <div class="share">
       <div>
-        <div>
+        <div @click="showApply">
           <img src="../assets/pv.png" alt="">
-          <span>{{article.pv}}</span>
+          <span>审核任务</span>
         </div>
       </div>
       <div @click="shareWechat">
@@ -41,20 +41,38 @@
     <div style="height:10px"></div>
 
     <x-dialog v-model="showToast" class="dialog-demo">
-        <div style="padding:15px; height:200px">
-          <img style="width:100%;height:100%" :src="webHost+article.qrcodeimage">
-        </div>
-        <div @click="showToast=false">
-          <span class="vux-close"></span>
-        </div>
-      </x-dialog>
+      <div style="padding:15px; height:200px">
+        <img style="width:100%;height:100%" :src="webHost+article.qrcodeimage">
+      </div>
+      <div @click="showToast=false">
+        <span class="vux-close"></span>
+      </div>
+    </x-dialog>
+
+    <x-dialog v-model="showToast1" class="dialog-demo">
+      <div style="padding:10px;">
+        <uploader :images="imgs" :max="1" title='上传分享截图,获取奖励'/>
+      </div>
+      
+      <div style="padding:10px;">
+        <x-button type="primary" @click.native="apply">提交审核</x-button>
+      </div>
+    </x-dialog>
+
+    <x-dialog v-model="showToast2" class="dialog-demo" hide-on-blur>
+      <!-- <div style="padding:10px;">
+        <uploader :images="imgs" :max="1" title='上传分享截图,获取奖励'/>
+      </div> -->
+      <img style="width:100%;height:auto" :src="webHost+article.qrcodeimage">
+    </x-dialog>
   </div>
 </template>
 
 <script>
-import { getArticleDetail } from '@/utils/api'
+import { getArticleDetail, doApply } from '@/utils/api'
 import {WEB_HOST} from '@/utils/const'
 import moment from 'moment'
+import Uploader from '@/components/Uploader'
 
 export default {
   name: 'ArticleDetail',
@@ -65,7 +83,10 @@ export default {
     article: {},
     moment,
     webHost: WEB_HOST,
-    showToast: false
+    showToast: false,
+    imgs: [],
+    showToast1: false,
+    showToast2: false
   }),
   methods: {
     getData () {
@@ -75,11 +96,33 @@ export default {
           this.$refs.content.querySelector('img').style.width = '100%'
           this.$refs.content.querySelector('img').style.height = 'auto'
         })
+        this.showToast2 = true
       })
     },
     shareWechat () {
       this.showToast = true
+    },
+    showApply () {
+      this.showToast1 = true
+    },
+    apply () {
+      if (!this.imgs.length) {
+        this.$vux.toast.text('还没有上传分享截图呢')
+        return
+      }
+      let p = {
+        articleId: this.$route.params.id,
+        qrcodeimage: this.imgs[0]
+      }
+      doApply(p).then(r => {
+        this.$vux.toast.text(r.msg)
+        this.showToast1 = false
+        this.imgs = []
+      })
     }
+  },
+  components: {
+    Uploader
   }
 }
 </script>
