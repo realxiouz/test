@@ -32,10 +32,12 @@
 
 <script>
 import UploaderItem from './UploaderItem'
-import { uploadFile } from '@/utils/api'
+import { qiniuConfig } from '@/utils/api'
 import { WEB_HOST, MAX_SIZE_FOR_PHOTO } from '@/utils/const'
+import axios from 'axios'
 
 export default {
+
   props: {
     images: {
       type: Array,
@@ -114,43 +116,43 @@ export default {
       if (this.handleClick) {
         return
       }
-      let formData = new window.FormData()
-      let file = this.$refs.input.files[0]
-      if (file.size > MAX_SIZE_FOR_PHOTO * 1024 * 1024) {
-        this.$vux.toast.text(`最大上传限制${MAX_SIZE_FOR_PHOTO}Mb`)
-        return
-      }
-      if (file.type.split('/')[0] !== 'image') {
-        this.$vux.toast.text(`只能上传图片格式文件`)
-        return
-      }
-      formData.append(this.name, file)
-      // if (this.params) {
-      //   for (let key in this.params) {
-      //     formData.append(key, this.params[key])
-      //   }
-      // }
-      if (this.autoUpload) {
-        if (this.$vux && this.$vux.loading) {
-          this.$vux.loading.show('正在上传')
+      qiniuConfig().then(r => {
+        let token = r.upload.multipart.token
+        let formData = new window.FormData()
+        let file = this.$refs.input.files[0]
+        if (file.size > MAX_SIZE_FOR_PHOTO * 1024 * 1024) {
+          this.$vux.toast.text(`最大上传限制${MAX_SIZE_FOR_PHOTO}Mb`)
+          return
         }
-        // axios.post(this.uploadUrl, formData,{headers: this.headers})
-        uploadFile(formData)
-        .then((response) => {
+        if (file.type.split('/')[0] !== 'image') {
+          this.$vux.toast.text(`只能上传图片格式文件`)
+          return
+        }
+        formData.append(this.name, file)
+        formData.append('token', token)
+        if (this.autoUpload) {
           if (this.$vux && this.$vux.loading) {
-            this.$vux.loading.hide()
+            this.$vux.loading.show('正在上传')
           }
-          this.$refs.input.value = ''
-          this.images.push(response.data.url)
-        })
-        .catch(e => {
-          if (this.$vux && this.$vux.loading) {
-            this.$vux.loading.hide()
-          }
-        })
-      } else {
-        this.$emit('upload-image', formData)
-      }
+          axios.post('https://upload-z2.qiniup.com', formData, {headers: {
+            'Content-Type': 'multipart/form-data'
+          }})
+          .then((response) => {
+            if (this.$vux && this.$vux.loading) {
+              this.$vux.loading.hide()
+            }
+            this.$refs.input.value = ''
+            this.images.push('/' + response.data.key)
+          })
+          .catch(e => {
+            if (this.$vux && this.$vux.loading) {
+              this.$vux.loading.hide()
+            }
+          })
+        } else {
+          this.$emit('upload-image', formData)
+        }
+      })
     }
   },
   computed: {

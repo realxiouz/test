@@ -23,7 +23,7 @@
             style="display: flex;justify-content: space-between;padding: 10px 15px;"
             @click="item.show = !item.show"
           >
-            <div class="flex"><img width="20" style="display:block;margin-right:5px;" src="../assets/wenjian.png" />{{item.text}}</div>
+            <div class="flex"><img style="display:block;margin-right:5px;width:20px;height:20px" src="../assets/wenjian.png" />{{item.text}}</div>
             <div :class="!item.show ?'bottom1' :'top1'"></div>
           </div>
           <template v-if="item.show">
@@ -136,7 +136,7 @@ export default {
             {
               title: '投稿赚钱',
               src: require('../assets/code.png'),
-              link: '/money-tip/3',
+              link: '/photo-post',
               des: '(合伙人上传套图)'
             },
             {

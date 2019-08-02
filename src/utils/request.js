@@ -4,12 +4,12 @@ import Vue from 'vue'
 // import store from '@/store'
 import router from '@/router'
 
-const request = axios
+const request = axios.create()
 // axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8'
-axios.defaults.headers['X-Requested-With'] = 'X-Requested-With'
-axios.defaults.baseURL = '/api'
+request.defaults.headers['X-Requested-With'] = 'X-Requested-With'
+request.defaults.baseURL = '/api'
 
-axios.interceptors.request.use(
+request.interceptors.request.use(
   r => {
     if (r.method === 'post' && r.url !== '/common/upload') {
       r.data = qs.stringify(r.data)
@@ -28,7 +28,7 @@ axios.interceptors.request.use(
   }
 )
 
-axios.interceptors.response.use(
+request.interceptors.response.use(
   res => {
     if (res.data.code === 1) {
       return res.data
@@ -38,7 +38,7 @@ axios.interceptors.response.use(
       }
       return Promise.reject(new Error(res.data.msg))
     }
-    return Promise.reject(new Error('出错了'))
+    return res.data
   },
   e => {
     if (e.response) {

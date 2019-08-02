@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { getInfoByToken, qiniuConfig } from '@/utils/api'
+import { getInfoByToken } from '@/utils/api'
 import { mapState, mapMutations } from 'vuex'
 import { validateToken } from '@/utils/const'
 import Ad from '@/components/Ad'
@@ -24,9 +24,9 @@ export default {
         this.setUser(r.data)
       })
     }
-    qiniuConfig().then(r => {
+    // qiniuConfig().then(r => {
 
-    })
+    // })
   },
   computed: {
     ...mapState(['user'])

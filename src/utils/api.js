@@ -85,3 +85,5 @@ export const addressList = _ => r.get('/user/getadresslist')
 export const addressDefault = _ => r.get('/user/getdefaultadress')
 
 export const goodsBuy = p => r.post('/user/buy', p)
+
+export const newGally = p => r.post('/gallery/add', p)
