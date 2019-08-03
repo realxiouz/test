@@ -1,7 +1,7 @@
 <template>
   <div>
     <box gap="40px">
-      <span style="font-size: 20px;font-weight: 400;">商务合作</span>
+      <span style="font-size: 20px;font-weight: 400;">{{type==='1'? '商务合作':'加盟/代理'}}</span>
     </box>
     <group>
       <x-input
@@ -35,9 +35,15 @@
 <script>
 import { Box, XButton, Group, XInput, Alert, AlertModule } from 'vux'
 import { mapState } from 'vuex'
-// import { sendSms } from '@/utils/api'
+import { corporateApply, addApply } from '@/utils/api'
 
 export default {
+  mounted () {
+    this.type = this.$route.query.type
+    if (this.type === '2') {
+      document.title = '加盟/代理'
+    }
+  },
   components: {
     Box, XButton, Group, XInput, Alert, AlertModule
   },
@@ -46,7 +52,8 @@ export default {
       phone: '',
       name: '',
       content: ''
-    }
+    },
+    type: '1'
   }),
   methods: {
     handleOk () {
@@ -62,7 +69,10 @@ export default {
         this.$vux.toast.text('填写合作内容')
         return
       }
-      this.$vux.toast.text(this.formBean)
+      let method = this.type === '1' ? corporateApply : addApply
+      method(this.formBean).then(r => {
+        this.$vux.toast.text('申请已提交,稍后专人与您联系')
+      })
     }
   },
   computed: {

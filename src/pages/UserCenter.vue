@@ -85,17 +85,14 @@ export default {
           children: [
             {
               title: '红包任务',
-              src: require('../assets/card.png'),
               link: '/reward'
             },
             {
               title: '分享推广',
-              src: require('../assets/code.png'),
               link: '/qrcode'
             },
             {
               title: '兑换礼品',
-              src: require('../assets/order.png'),
               link: '/goods',
               des: '(金币可兑换礼品)'
             }
@@ -107,12 +104,10 @@ export default {
           children: [
             {
               title: '钱包金币',
-              src: require('../assets/card.png'),
               link: '/my-wallet'
             },
             {
               title: '我的订单',
-              src: require('../assets/order.png'),
               link: '/my-order'
             }
           ]
@@ -122,19 +117,17 @@ export default {
           show: false,
           children: [
             {
-              title: '看图/文赚钱',
-              src: require('../assets/card.png'),
-              link: '/money-tip/2'
-            },
-            {
               title: '投稿赚钱',
-              src: require('../assets/code.png'),
               link: '/member',
               des: '(合伙人上传套图)'
             },
             {
+              title: '看图/文赚钱',
+              link: '/money-tip/2'
+            },
+
+            {
               title: '发展新合伙人',
-              src: require('../assets/order.png'),
               link: '/member'
             }
           ]
@@ -145,19 +138,16 @@ export default {
           children: [
             {
               title: '加盟/代理',
-              src: require('../assets/card.png'),
-              link: '/corporate'
+              link: '/corporate?type=2'
             },
             {
               title: '我要约拍',
-              src: require('../assets/code.png'),
               link: '/corporate',
               des: '(模特or摄影师)'
             },
             {
               title: '商务合作',
-              src: require('../assets/order.png'),
-              link: '/corporate'
+              link: '/corporate?type=1'
             }
           ]
         }
@@ -179,17 +169,14 @@ export default {
           children: [
             {
               title: '红包任务',
-              src: require('../assets/card.png'),
               link: '/reward'
             },
             {
               title: '分享推广',
-              src: require('../assets/code.png'),
               link: '/qrcode'
             },
             {
               title: '兑换礼品',
-              src: require('../assets/order.png'),
               link: '/goods',
               des: '(金币可兑换礼品)'
             }
@@ -201,12 +188,10 @@ export default {
           children: [
             {
               title: '钱包金币',
-              src: require('../assets/card.png'),
               link: '/my-wallet'
             },
             {
               title: '我的订单',
-              src: require('../assets/order.png'),
               link: '/my-order'
             }
           ]
@@ -216,19 +201,16 @@ export default {
           show: false,
           children: [
             {
-              title: '看图/文赚钱',
-              src: require('../assets/card.png'),
-              link: '/money-tip/2'
-            },
-            {
               title: '投稿赚钱',
-              src: require('../assets/code.png'),
               link: '/photo-post',
               des: '(合伙人上传套图)'
             },
             {
+              title: '看图/文赚钱',
+              link: '/money-tip/2'
+            },
+            {
               title: '发展新合伙人',
-              src: require('../assets/order.png'),
               link: '/qrcode'
             }
           ]
@@ -239,19 +221,16 @@ export default {
           children: [
             {
               title: '加盟/代理',
-              src: require('../assets/card.png'),
-              link: '/corporate'
+              link: '/corporate?type=2'
             },
             {
               title: '我要约拍',
-              src: require('../assets/code.png'),
               link: '/corporate',
               des: '(模特or摄影师)'
             },
             {
               title: '商务合作',
-              src: require('../assets/order.png'),
-              link: '/corporate'
+              link: '/corporate?type=1'
             }
           ]
         }

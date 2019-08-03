@@ -89,3 +89,7 @@ export const goodsBuy = p => r.post('/user/buy', p)
 export const newGally = p => r.post('/gallery/add', p)
 
 export const doApply = p => r.post('/article/share', p)
+
+export const corporateApply = p => r.post('/business_cooperation/add', p)
+
+export const addApply = p => r.post('/franchise_agent/add', p)
