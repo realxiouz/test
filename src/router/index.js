@@ -295,6 +295,15 @@ const router = new Router({
         title: '商务合作',
         auth: true
       }
+    },
+    {
+      path: '/yuepai',
+      name: 'Yuepai',
+      component: _ => import('@/pages/Yuepai'),
+      meta: {
+        title: '我要约拍',
+        auth: true
+      }
     }
   ]
 })

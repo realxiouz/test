@@ -142,7 +142,7 @@ export default {
             },
             {
               title: '我要约拍',
-              link: '/corporate',
+              link: '/yuepai',
               des: '(模特or摄影师)'
             },
             {
@@ -225,7 +225,7 @@ export default {
             },
             {
               title: '我要约拍',
-              link: '/corporate',
+              link: '/yuepai',
               des: '(模特or摄影师)'
             },
             {

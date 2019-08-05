@@ -93,3 +93,5 @@ export const doApply = p => r.post('/article/share', p)
 export const corporateApply = p => r.post('/business_cooperation/add', p)
 
 export const addApply = p => r.post('/franchise_agent/add', p)
+
+export const newYuepai = p => r.post('/about_photograph/add', p)
