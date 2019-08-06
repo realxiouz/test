@@ -2,7 +2,7 @@
   <div>
     <div class="ad-wrap" v-if="show" :style="bottom">
       <div class="ad-content">
-        <swiper :auto="false" class="ads" :show-dots="false" :loop="true" height="120px">
+        <swiper :auto="true" class="ads" :show-dots="false" :loop="true" height="100px" :interval="6000">
           <swiper-item class="black" v-for="(i, inx) in list" :key="inx" @click.native="newPage(i)">
             <div class="ad-detail">
               <img :src="webHost+i.image">
@@ -70,7 +70,7 @@ export default {
   bottom: 53px;
   left: 0;
   right: 0;
-  height: 120px;
+  height: 100px;
   .ad-content {
     position: relative;
     width: 100%;
@@ -92,7 +92,7 @@ export default {
       position: absolute;
       width: 100%;
       height: 100%;
-      
+
     }
   }
 }
@@ -105,8 +105,8 @@ export default {
  padding: 10px;
  background: rgba(0,0,0,.5);
   img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     margin-right: 16px;
   }
   >div{
@@ -114,20 +114,21 @@ export default {
     color: #fff;
     .title{
       font-weight: bold;
-      font-size: 22px;
+      font-size: 18px;
     }
     .des{
-
+      font-size: 10px;
     }
   }
   .see{
     position: absolute;
     bottom: 10px;
     right: 10px;
-    padding: 2px 6px;
+    padding: 2px 8px;
     background: #0081ff;
     color: #fff;
     border-radius: 4px;
+    font-size: 10px;
   }
 }
 </style>

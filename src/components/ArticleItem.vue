@@ -10,42 +10,72 @@
         <div class="c-time">{{moment().from(bean.createtime*1000)}}</div>
       </div>
     </div>
-    <div v-if="type===1||type===2" class="item type0">
+    <div v-if="type===1" class="item type0">
       <div class="title">{{bean.title}}</div>
       <div class="info justify-between">
         <div class="flex">
           <div class="auth">{{bean.username}}</div>
-          <div class="v-count">浏览量&nbsp;{{bean.pv}}</div>
-          <div class="c-time">{{moment().from(bean.createtime*1000)}}</div>
+          <!-- <div class="v-count">浏览量&nbsp;{{bean.pv}}</div>
+          <div class="c-time">{{moment().from(bean.createtime*1000)}}</div> -->
         </div>
-        <div style="color:red">立即分享赚: {{bean.shareprice}}元 共{{bean.sharecount}}次</div>
+        <div style="color:red">
+          <span>总金额:{{bean.totalprice}}元</span>
+          <span class="dot"></span>
+          <span>剩余:{{bean.surplusprice}}元</span>
+          <span class="dot"></span>
+          <span>立即分享赚: {{bean.shareprice}}元</span>
+          <!-- <span class="dot"></span>
+           共{{bean.sharecount}}次 -->
+        </div>
       </div>
       <div style="height:160px;margin-top:10px;">
         <img :src="webHost+bean.imgs[0]" style="width:100%;height:100%"/>
       </div>
-      <!-- <div class="left">
-        <div class="title">{{bean.title}}</div>
-        <div class="info">
-          <div class="item-tag" v-if="bean.is_top">置顶</div>
-          <div class="item-tag" v-if="bean.is_hot">热</div>
-          <div class="auth">{{bean.auth}}</div>
-          <div class="v-count">浏览量&nbsp;{{bean.pv}}</div>
-          <div class="c-time">{{moment().from(bean.createtime*1000)}}</div>
+    </div>
+    <div v-if="type===2" class="item type2">
+      <div class="title">{{bean.title}}</div>
+      <div class="info justify-between" style="margin-bottom:10px">
+        <div class="flex">
+          <div class="auth">{{bean.username}}</div>
+          <!-- <div class="v-count">浏览量&nbsp;{{bean.pv}}</div>
+          <div class="c-time">{{moment().from(bean.createtime*1000)}}</div> -->
+        </div>
+        <div style="color:red">
+          <span>总金额:{{bean.totalprice}}元</span>
+          <span class="dot"></span>
+          <span>剩余:{{bean.surplusprice}}元</span>
+          <span class="dot"></span>
+          <span>立即分享赚: {{bean.shareprice}}元</span>
+          <!-- <span class="dot"></span>
+           共{{bean.sharecount}}次 -->
         </div>
       </div>
-      <div class="right">
-        <img :src="webHost+bean.thumbimage" alt />
-      </div> -->
+        <ul class="imgs">
+          <li style="padding-right: 2px;">
+            <img :src="webHost+bean.imgs[0]">
+          </li>
+          <li style="padding-left: 2px;">
+            <img :src="webHost+bean.imgs[1]">
+          </li>
+        </ul>
     </div>
     <div v-if="type===3" class="item type3">
       <div class="title">{{bean.title}}</div>
       <div class="info justify-between" style="margin-bottom:10px">
         <div class="flex">
           <div class="auth">{{bean.username}}</div>
-          <div class="v-count">浏览量&nbsp;{{bean.pv}}</div>
-          <div class="c-time">{{moment().from(bean.createtime*1000)}}</div>
+          <!-- <div class="v-count">浏览量&nbsp;{{bean.pv}}</div>
+          <div class="c-time">{{moment().from(bean.createtime*1000)}}</div> -->
         </div>
-        <div style="color:red">立即分享赚: {{bean.shareprice}}元  共{{bean.sharecount}}次</div>
+        <div style="color:red">
+          <span>总金额:{{bean.totalprice}}元</span>
+          <span class="dot"></span>
+          <span>剩余:{{bean.surplusprice}}元</span>
+          <span class="dot"></span>
+          <span>立即分享赚: {{bean.shareprice}}元</span>
+          <!-- <span class="dot"></span>
+           共{{bean.sharecount}}次 -->
+        </div>
       </div>
         <ul class="imgs">
           <li style="padding-right: 2px;">
@@ -162,7 +192,8 @@ export default {
   }
 }
 
-.imgs{
+.type3{
+  .imgs{
   margin-top:10px;
   display: block;
   margin: 0;
@@ -181,6 +212,40 @@ export default {
       height:100%;
     }
   }
+}
+}
+
+.type2{
+  .imgs{
+  margin-top:10px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  font-size: 0;
+  text-align: center;
+  li{
+    display: inline-block;
+    overflow: hidden;
+    width: 50%;
+    box-sizing: border-box;
+    height: 120px;
+    >img{
+      width:100%;
+      height:100%;
+    }
+  }
+}
+}
+
+.dot{
+  display: inline-block;
+  width: 2px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: #999;
+  margin: 0 4px;
+  vertical-align: middle;
 }
 </style>
 
