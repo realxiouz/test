@@ -1,8 +1,8 @@
 <template>
   <div>
     <div v-html="tip" ref="tip" style="padding:10px"></div>
-    <box gap="10px 10px">
-      <x-button type="primary" link="">去赚钱</x-button>
+    <box gap="10px 100px 100px 100px">
+      <x-button plain type="primary" style="border-radius:99px;" @click.native="handleMoney">去赚钱</x-button>
     </box>
   </div>
 </template>
@@ -34,6 +34,23 @@ export default {
   },
   data: _ => ({
     tip: ''
-  })
+  }),
+  methods: {
+    handleMoney () {
+      switch (this.$route.params.type) {
+        case '5':
+          this.$router.push('/corporate?type=2')
+          break
+        case '6':
+          this.$router.push('/yuepai')
+          break
+        case '7':
+          this.$router.push('/corporate?type=1')
+          break
+        default:
+          break
+      }
+    }
+  }
 }
 </script>

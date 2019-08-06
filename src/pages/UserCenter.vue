@@ -138,16 +138,16 @@ export default {
           children: [
             {
               title: '加盟/代理',
-              link: '/corporate?type=2'
+              link: '/money-tip/5'
             },
             {
               title: '我要约拍',
-              link: '/yuepai',
+              link: '/money-tip/6',
               des: '(模特or摄影师)'
             },
             {
               title: '商务合作',
-              link: '/corporate?type=1'
+              link: '/money-tip/7'
             }
           ]
         }
@@ -221,16 +221,16 @@ export default {
           children: [
             {
               title: '加盟/代理',
-              link: '/corporate?type=2'
+              link: '/money-tip/5'
             },
             {
               title: '我要约拍',
-              link: '/yuepai',
+              link: '/money-tip/6',
               des: '(模特or摄影师)'
             },
             {
               title: '商务合作',
-              link: '/corporate?type=1'
+              link: '/money-tip/7'
             }
           ]
         }
