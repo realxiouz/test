@@ -9,12 +9,18 @@
             />
           </div>
           <div class="name">{{user.nickname||user.mobile}}</div>
-          <div @click.stop="$router.push('/member')">{{user.level == 1 ? '(合伙人)':'(普通会员)成为合伙人?'}}</div>
+          <div @click.stop="$router.push('/member')" :style="user.level == 1?'color:#333':'color:blue'">{{user.level == 1 ? '(合伙人)':'(普通会员)成为合伙人?'}}</div>
         </div>
         <div class="f3">
-          <div class="item" @click="$router.push('/money-tip/0')">赚钱秘籍</div>
-          <div class="item" @click="$router.push('/qrcode')">我的二维码</div>
-          <div class="item" @click="$router.push('/my-group')">我的团队</div>
+          <div class="item" @click="$router.push('/money-tip/0')">
+            <img src="../assets/tip.png" alt="">赚钱秘籍
+          </div>
+          <div class="item" @click="$router.push('/qrcode')">
+            <img src="../assets/code.png" alt="">我的二维码
+          </div>
+          <div class="item" @click="$router.push('/my-group')">
+            <img src="../assets/group.png" alt="">我的团队
+          </div>
         </div>
         <group v-for="(item, index) in groups" :key="`group${index}`" class="vux-1px-b">
           <div
@@ -35,7 +41,7 @@
               :link="i.link"
             >
               <span slot="after-title" v-if="i.des" style="font-size:14px;color:gray">{{i.des}}</span>
-              <!-- <img slot="icon" width="20" style="display:block;margin-right:5px;" :src="i.src" /> -->
+              <img slot="icon" width="20" style="display:block;" src="../assets/what.png" />
             </cell>
           </template>
         </group>
@@ -51,7 +57,7 @@
           </div>
           <div class="card-item">
             <div class="content">
-              <img src="../assets/card.png" alt="">
+              <img src="../assets/phone.png" alt="">
               <div>
                 <div class="title">话费充值</div>
                 <div class="sub-title">9折起</div>
@@ -290,6 +296,13 @@ export default {
     text-align: center;
     padding: 10px 0;
     font-size: 12px;
+    display: flex;
+    justify-content: center;
+    >img{
+      width: 20px;
+      height: 20px;
+      margin-right: 4px;
+    }
   }
 }
 
