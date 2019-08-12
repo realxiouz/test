@@ -14,11 +14,11 @@
 export default {
   data: _ => ({
     barData: [
-      {text: '首页', src: require('@/assets/home1.jpg'), active: require('@/assets/test.png'), path: '/home'},
-      {text: '套图', src: require('@/assets/photo1.jpg'), active: require('@/assets/test.png'), path: '/photos'},
-      {text: '看图/文赚钱', src: require('@/assets/money1.jpg'), active: require('@/assets/test.png'), path: '/articles'},
-      {text: '视屏', src: require('@/assets/video1.jpg'), active: require('@/assets/test.png'), path: '/videos'},
-      {text: '我的', src: require('@/assets/me1.jpg'), active: require('@/assets/test.png'), path: '/user-center'}
+      {text: '首页', src: require('@/assets/home1.png'), active: require('@/assets/home.png'), path: '/home'},
+      {text: '套图', src: require('@/assets/photo1.png'), active: require('@/assets/photo.png'), path: '/photos'},
+      {text: '看图/文赚钱', src: require('@/assets/money1.png'), active: require('@/assets/money.png'), path: '/articles'},
+      {text: '视屏', src: require('@/assets/video1.png'), active: require('@/assets/video.png'), path: '/videos'},
+      {text: '我的', src: require('@/assets/me1.png'), active: require('@/assets/me.png'), path: '/user-center'}
     ]
   })
 }
@@ -65,9 +65,12 @@ export default {
         top: -25px;
         width: 40px;
         height: 40px;
+        >img {
+          border-radius: 50%;
+        }
       }
       .title {
-        color: #17BA9D;
+        color: #19AC16;
       }
     }
     .img-warp{
