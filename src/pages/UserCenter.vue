@@ -92,7 +92,7 @@ export default {
               link: '/qrcode'
             },
             {
-              title: '兑换礼品',
+              title: '兑换商品',
               link: '/goods',
               des: '(金币可兑换礼品)'
             }
@@ -176,7 +176,7 @@ export default {
               link: '/qrcode'
             },
             {
-              title: '兑换礼品',
+              title: '兑换商品',
               link: '/goods',
               des: '(金币可兑换礼品)'
             }

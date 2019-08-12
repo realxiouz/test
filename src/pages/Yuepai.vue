@@ -33,12 +33,12 @@
       ></x-input>
       <x-textarea :max="200" placeholder="约拍内容,限200字" v-model="formBean.content"/>
       <popup-picker title="约拍类型" :data="list" v-model="selType" placeholder="摄影师Or模特" show-name></popup-picker>
-      <datetime
+      <!-- <datetime
         v-model="formBean.abouttime"
         @on-change="change"
         title="约拍时间"
         format="YYYY-MM-DD HH:mm"
-      />
+      /> -->
     </group>
 
     <box gap="100px 10px 50px">

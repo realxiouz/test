@@ -1,7 +1,8 @@
 <template>
   <div>
-    <div class="wtf">
-      金币商城
+    <div class="wtf flex justify-between">
+      兑换商品
+      <span style="font-weight:normal;color: green;" @click="$router.push('/my-goods')">兑换记录</span>
     </div>
     <scroller
       lock-x

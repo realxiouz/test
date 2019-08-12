@@ -17,6 +17,7 @@
 
 <script>
 import { getArea, newAddress, editAddress, addressDefault } from '@/utils/api'
+
 export default {
   mounted () {
     getArea().then(r => {
@@ -93,12 +94,18 @@ export default {
       if (!this.aId) {
         newAddress(p).then(r => {
           this.$vux.toast.text(r.msg)
+          setTimeout(_ => {
+            this.$router.go(-1)
+          }, 1500)
         })
       } else {
         p.id = this.aId
         editAddress(p).then(r => {
           this.$vux.toast.text(r.msg)
         })
+        setTimeout(_ => {
+          this.$router.go(-1)
+        }, 1500)
       }
     },
     getData () {

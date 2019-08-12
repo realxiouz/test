@@ -9,9 +9,10 @@
     <uploader :images="photoForm.images" :max="1" title='上传封面'/>
     <uploader :images="photoForm.gallery_images" :max="100"/>
     <group>
-      <cell title="免费浏览" primary="content" :inline-desc="`${photoForm.free_num}张`">
+      <!-- <cell title="免费浏览" primary="content" :inline-desc="`${photoForm.free_num}张`">
         <range :step="1" v-model="photoForm.free_num" :max="photoForm.gallery_images.length"></range>
-      </cell>
+      </cell> -->
+      <x-number title="免费浏览" v-model="photoForm.free_num" :min="0" fillable></x-number>
     </group>
 
     <box gap="15px 10px">

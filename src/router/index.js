@@ -256,7 +256,7 @@ const router = new Router({
       name: 'Goods',
       component: _ => import('@/pages/Goods'),
       meta: {
-        title: '积分商城',
+        title: '兑换商品',
         auth: true
       }
     },
@@ -302,6 +302,15 @@ const router = new Router({
       component: _ => import('@/pages/Yuepai'),
       meta: {
         title: '我要约拍',
+        auth: true
+      }
+    },
+    {
+      path: '/my-goods',
+      name: 'MyGoods',
+      component: _ => import('@/pages/MyGoods'),
+      meta: {
+        title: '兑换记录',
         auth: true
       }
     }

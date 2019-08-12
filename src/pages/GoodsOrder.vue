@@ -61,6 +61,9 @@ export default {
       }
       goodsBuy(p).then(r => {
         this.$vux.toast.text(r.msg)
+        setTimeout(_ => {
+          this.$router.push('/my-goods')
+        }, 1500)
       })
     }
   }
