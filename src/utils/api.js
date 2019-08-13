@@ -76,6 +76,8 @@ export const goodList = p => r.get('/user/goodslist', {params: p})
 
 export const payMemberData = p => r.post('/member/order', p)
 export const checkMemberPay = p => r.get('/member/querypay', {params: p})
+export const checkOilPay = p => r.get('/member/querypayrechargecard', {params: p})
+export const checkPhonePay = p => r.get('/member/querypay', {params: p})
 
 export const getArea = p => r.get('/user/area', {params: p})
 
@@ -96,3 +98,12 @@ export const corporateApply = p => r.post('/business_cooperation/add', p)
 export const addApply = p => r.post('/franchise_agent/add', p)
 
 export const newYuepai = p => r.post('/about_photograph/add', p)
+
+export const phoneCharge = p => r.post('/recharge_telephonebill/order', p)
+
+export const oilCharge = p => r.post('/recharge_refuelingcard/order', p)
+
+export const oilList = p => r.get('/recharge_refuelingcard', {params: p})
+export const phoneList = p => r.get('/recharge_telephonebill', {params: p})
+
+export const oilRatio = _ => r.get('/recharge_refuelingcard/rechargelist')

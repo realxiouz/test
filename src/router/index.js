@@ -122,6 +122,20 @@ const router = new Router({
       }
     },
     {
+      path: '/pay-oil-result/:id',
+      name: 'PayOilResult',
+      component: _ => import('@/pages/PayOilResult'),
+      meta: {
+      }
+    },
+    {
+      path: '/pay-phone-result/:id',
+      name: 'PayPhoneResult',
+      component: _ => import('@/pages/PayPhoneResult'),
+      meta: {
+      }
+    },
+    {
       path: '/reward',
       name: 'Reward',
       component: _ => import('@/pages/Reward'),
@@ -311,6 +325,42 @@ const router = new Router({
       component: _ => import('@/pages/MyGoods'),
       meta: {
         title: '兑换记录',
+        auth: true
+      }
+    },
+    {
+      path: '/oil',
+      name: 'Oil',
+      component: _ => import('@/pages/Oil'),
+      meta: {
+        title: '加油卡充值',
+        auth: true
+      }
+    },
+    {
+      path: '/oil-list',
+      name: 'OilList',
+      component: _ => import('@/pages/OilList'),
+      meta: {
+        title: '加油卡充值记录',
+        auth: true
+      }
+    },
+    {
+      path: '/phone',
+      name: 'Phone',
+      component: _ => import('@/pages/Phone'),
+      meta: {
+        title: '话费充值',
+        auth: true
+      }
+    },
+    {
+      path: '/phone-list',
+      name: 'PhoneList',
+      component: _ => import('@/pages/PhoneList'),
+      meta: {
+        title: '话费充值记录',
         auth: true
       }
     }

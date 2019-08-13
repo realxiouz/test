@@ -11,7 +11,8 @@ export default new Vuex.Store({
     },
     user: {},
     redirectPath: '',
-    goods: {}
+    goods: {},
+    oilRatio: 1
   },
   mutations: {
     setRedirectPath (store, path) {
@@ -22,6 +23,9 @@ export default new Vuex.Store({
     },
     setGoods (store, goods) {
       store.goods = goods
+    },
+    setOilRatio (store, ratio) {
+      store.oilRatio = ratio
     }
   }
 })

@@ -46,21 +46,21 @@
           </template>
         </group>
         <div class="card-charge" style="margin-top:20px">
-          <div class="card-item vux-1px-r">
+          <div class="card-item vux-1px-r" @click="$router.push('/oil')">
             <div class="content">
               <img src="../assets/card.png" alt="">
               <div>
                 <div class="title">加油卡充值</div>
-                <div class="sub-title">8.8折起</div>
+                <div class="sub-title">{{oilRatio}}折起</div>
               </div>
             </div>
           </div>
-          <div class="card-item">
+          <div class="card-item" @click="$router.push('/phone')">
             <div class="content">
               <img src="../assets/phone.png" alt="">
               <div>
                 <div class="title">话费充值</div>
-                <div class="sub-title">9折起</div>
+                <div class="sub-title">{{oilRatio}}折起</div>
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@
 import { Group, Cell } from 'vux'
 import { mapState, mapMutations } from 'vuex'
 import { WEB_HOST } from '@/utils/const'
-import { logout } from '@/utils/api'
+import { logout, oilRatio } from '@/utils/api'
 import NavBottom from '@/components/NavBar1'
 
 export default {
@@ -159,6 +159,12 @@ export default {
         }
       ]
     }
+
+    oilRatio().then(r => {
+      let d = r.data
+      let radio = 10 - d[new Date().getDay()]
+      this.setOilRatio(radio)
+    })
   },
   components: {
     Group,
@@ -244,10 +250,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(['user'])
+    ...mapState(['user', 'oilRatio'])
   },
   methods: {
-    ...mapMutations(['setUser']),
+    ...mapMutations(['setUser', 'setOilRatio']),
     handleLogout () {
       logout()
         .then(r => {})
