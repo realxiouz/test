@@ -107,3 +107,4 @@ export const oilList = p => r.get('/recharge_refuelingcard', {params: p})
 export const phoneList = p => r.get('/recharge_telephonebill', {params: p})
 
 export const oilRatio = _ => r.get('/recharge_refuelingcard/rechargelist')
+export const phoneRatio = _ => r.get('/recharge_telephonebill/rechargelist')

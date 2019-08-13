@@ -4,7 +4,7 @@
           话费充值
           <span style="font-weight:normal;color: green;" @click="$router.push('/phone-list')">充值记录</span>
         </div>
-        <group style="padding:58px 0px 0" :title="`话费充值${oilRatio}折`">
+        <group style="padding:58px 0px 0" :title="phoneStr">
             <x-input title="用户名" v-model="formBean.name" placeholder="输入姓名"/>
             <x-input title="手机号"
               v-model="formBean.phone"
@@ -15,7 +15,7 @@
               ref="mobile"
             />
             <popup-picker title="选择类型" :data="channels" v-model="val" placeholder="选择方式" show-name @on-change="handleChange"></popup-picker>
-            <x-number title="充值金额" v-model="formBean.price" :min="100" :step="100"/>
+            <x-number title="充值金额" v-model="formBean.price" :min="10" :step="10" fillable/>
             <popup-picker title="支付方式" :data="types" v-model="type" placeholder="选择方式" show-name @on-change="handleTypeChange"></popup-picker>
         </group>
         <box gap="100px 10px 0">
@@ -82,7 +82,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['oilRatio'])
+    ...mapState(['phoneStr'])
   },
   methods: {
     handleOk () {

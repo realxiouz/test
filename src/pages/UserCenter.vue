@@ -46,21 +46,21 @@
           </template>
         </group>
         <div class="card-charge" style="margin-top:20px">
-          <div class="card-item vux-1px-r" @click="$router.push('/oil')">
+          <div class="card-item vux-1px-r" @click="doOil">
             <div class="content">
               <img src="../assets/card.png" alt="">
               <div>
                 <div class="title">加油卡充值</div>
-                <div class="sub-title">{{oilRatio}}折起</div>
+                <div class="sub-title">{{oilRatio}}折</div>
               </div>
             </div>
           </div>
-          <div class="card-item" @click="$router.push('/phone')">
+          <div class="card-item" @click="doPhone">
             <div class="content">
               <img src="../assets/phone.png" alt="">
               <div>
                 <div class="title">话费充值</div>
-                <div class="sub-title">{{oilRatio}}折起</div>
+                <div class="sub-title">{{phoneMin}}折起</div>
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@
 import { Group, Cell } from 'vux'
 import { mapState, mapMutations } from 'vuex'
 import { WEB_HOST } from '@/utils/const'
-import { logout, oilRatio } from '@/utils/api'
+import { logout, oilRatio, phoneRatio } from '@/utils/api'
 import NavBottom from '@/components/NavBar1'
 
 export default {
@@ -165,6 +165,18 @@ export default {
       let radio = 10 - d[new Date().getDay()]
       this.setOilRatio(radio)
     })
+
+    phoneRatio().then(r => {
+      let arr = []
+      let arrTemp = []
+      for (const key in r.data) {
+        arr.push(r.data[key] - 0)
+        arrTemp.push(`充值${key},优惠${r.data[key]}%`)
+      }
+      let max = Math.max(...arr)
+      this.setPhoneMin(10 - max / 10)
+      this.setPhoneStr(arrTemp.join(';'))
+    })
   },
   components: {
     Group,
@@ -250,10 +262,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(['user', 'oilRatio'])
+    ...mapState(['user', 'oilRatio', 'phoneMin'])
   },
   methods: {
-    ...mapMutations(['setUser', 'setOilRatio']),
+    ...mapMutations(['setUser', 'setOilRatio', 'setPhoneMin', 'setPhoneStr']),
     handleLogout () {
       logout()
         .then(r => {})
@@ -263,6 +275,26 @@ export default {
           this.$vux.toast.text('注销成功')
           this.$router.push({ name: 'Login' })
         })
+    },
+    doOil () {
+      if (this.user.level !== '1') {
+        this.$vux.toast.text('合伙人才能享受优惠')
+        setTimeout(_ => {
+          this.$router.push('/member')
+        }, 1500)
+      } else {
+        this.$router.push('/oil')
+      }
+    },
+    doPhone () {
+      if (this.user.level !== '1') {
+        this.$vux.toast.text('合伙人才能享受优惠')
+        setTimeout(_ => {
+          this.$router.push('/member')
+        }, 1500)
+      } else {
+        this.$router.push('/phone')
+      }
     }
   }
 }
