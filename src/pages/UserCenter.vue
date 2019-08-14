@@ -94,13 +94,13 @@ export default {
               link: '/reward'
             },
             {
-              title: '分享推广',
-              link: '/qrcode'
-            },
-            {
               title: '兑换商品',
               link: '/goods',
               des: '(金币可兑换礼品)'
+            },
+            {
+              title: '图文分享审核列表',
+              link: '/check-list'
             }
           ]
         },
@@ -123,6 +123,10 @@ export default {
           show: false,
           children: [
             {
+              title: '分享推广',
+              link: '/qrcode'
+            },
+            {
               title: '投稿赚钱',
               link: '/member',
               des: '(合伙人上传套图)'
@@ -131,7 +135,6 @@ export default {
               title: '看图/文赚钱',
               link: '/money-tip/2'
             },
-
             {
               title: '发展新合伙人',
               link: '/member'
@@ -162,7 +165,7 @@ export default {
 
     oilRatio().then(r => {
       let d = r.data
-      let radio = 10 - d[new Date().getDay()]
+      let radio = 10 - d[new Date().getDate()]
       this.setOilRatio(radio)
     })
 
@@ -173,7 +176,7 @@ export default {
         arr.push(r.data[key] - 0)
         arrTemp.push(`充值${key},优惠${r.data[key]}%`)
       }
-      let max = Math.max(...arr)
+      let max = Math.min(...arr)
       this.setPhoneMin(10 - max / 10)
       this.setPhoneStr(arrTemp.join(';'))
     })
@@ -196,13 +199,13 @@ export default {
               link: '/reward'
             },
             {
-              title: '分享推广',
-              link: '/qrcode'
-            },
-            {
               title: '兑换商品',
               link: '/goods',
               des: '(金币可兑换礼品)'
+            },
+            {
+              title: '图文分享审核',
+              link: '/check-list'
             }
           ]
         },
@@ -224,6 +227,10 @@ export default {
           text: '我要赚钱',
           show: false,
           children: [
+            {
+              title: '分享推广',
+              link: '/qrcode'
+            },
             {
               title: '投稿赚钱',
               link: '/photo-post',
@@ -336,6 +343,7 @@ export default {
     font-size: 12px;
     display: flex;
     justify-content: center;
+    align-items: center;
     >img{
       width: 20px;
       height: 20px;

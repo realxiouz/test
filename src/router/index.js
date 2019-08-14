@@ -363,6 +363,24 @@ const router = new Router({
         title: '话费充值记录',
         auth: true
       }
+    },
+    {
+      path: '/check-list',
+      name: 'CheckList',
+      component: _ => import('@/pages/CheckList'),
+      meta: {
+        title: '审核上传图文记录',
+        auth: true
+      }
+    },
+    {
+      path: '/check',
+      name: 'Check',
+      component: _ => import('@/pages/Check'),
+      meta: {
+        title: '审核上传图文',
+        auth: true
+      }
     }
   ]
 })

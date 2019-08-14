@@ -4,7 +4,7 @@
           加油卡充值
           <span style="font-weight:normal;color: green;" @click="$router.push('/oil-list')">充值记录</span>
         </div>
-        <group style="padding:58px 0px 0" :title="`油卡充值${oilRatio}折`">
+        <group style="padding:58px 0px 0" :title="`今天是${new Date().getDate()}号,油卡充值${oilRatio}折`">
             <x-input title="用户名" v-model="formBean.name" placeholder="输入姓名"/>
             <x-input title="手机号" v-model="formBean.phone" placeholder="输入电话"/>
             <popup-picker title="选择类型" :data="channels" v-model="val" placeholder="选择方式" show-name @on-change="handleChange"></popup-picker>
