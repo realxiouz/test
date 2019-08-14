@@ -129,7 +129,7 @@ export default {
             },
             {
               title: '投稿赚钱',
-              link: '/member',
+              link: '/money-tip/3',
               des: '(合伙人上传套图)'
             },
             {
@@ -235,7 +235,7 @@ export default {
             },
             {
               title: '投稿赚钱',
-              link: '/photo-post',
+              link: '/money-tip/3',
               des: '(合伙人上传套图)'
             },
             {

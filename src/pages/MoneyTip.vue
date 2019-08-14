@@ -2,13 +2,14 @@
   <div>
     <div v-html="tip" ref="tip" style="padding:10px"></div>
     <box gap="10px 100px 100px 100px">
-      <x-button plain type="primary" style="border-radius:99px;" @click.native="handleMoney">去赚钱</x-button>
+      <x-button plain type="primary" style="border-radius:99px;" @click.native="handleMoney">{{textObj[$route.params.type]}}</x-button>
     </box>
   </div>
 </template>
 
 <script>
 import { moneyTip, withdrawTip, articleTip, contributeTip, partnerTip, joinTip, yuepaiTip, cooperationTip } from '@/utils/api'
+import { mapState } from 'vuex'
 
 export default {
   name: 'MoneyTip',
@@ -33,11 +34,28 @@ export default {
     })
   },
   data: _ => ({
-    tip: ''
+    tip: '',
+    textObj: {
+      '0': '去赚钱',
+      '1': '去提现',
+      '2': '去投稿',
+      '3': '去投稿',
+      '4': '去赚钱',
+      '5': '去加盟',
+      '6': '去约拍',
+      '7': '去合作'
+    }
   }),
   methods: {
     handleMoney () {
       switch (this.$route.params.type) {
+        case '3':
+          if (this.user.level === '0') {
+            this.$router.push('/member')
+          } else {
+            this.$router.push('/photo-post')
+          }
+          break
         case '5':
           this.$router.push('/corporate?type=2')
           break
@@ -51,6 +69,9 @@ export default {
           break
       }
     }
+  },
+  computed: {
+    ...mapState(['user'])
   }
 }
 </script>

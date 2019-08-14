@@ -5,7 +5,9 @@
 </template>
 
 <script>
-import { checkMemberPay } from '@/utils/api'
+import { checkMemberPay, getInfoByToken } from '@/utils/api'
+import { mapMutations } from 'vuex'
+
 export default {
   mounted () {
     let id = this.$route.params.id
@@ -13,6 +15,10 @@ export default {
       this.title = '支付成功'
       this.icon = 'success'
       this.description = r.msg
+
+      getInfoByToken().then(r => {
+        this.setUser(r.data)
+      })
     }).catch(e => {
       this.title = '支付失败'
       this.icon = 'warn'
@@ -31,6 +37,9 @@ export default {
       }
     ],
     icon: 'waiting'
-  })
+  }),
+  methods: {
+    ...mapMutations(['setUser'])
+  }
 }
 </script>
