@@ -8,6 +8,7 @@
             <x-input title="用户名" v-model="formBean.name" placeholder="输入姓名"/>
             <x-input title="手机号" v-model="formBean.phone" placeholder="输入电话"/>
             <popup-picker title="选择类型" :data="channels" v-model="val" placeholder="选择方式" show-name @on-change="handleChange"></popup-picker>
+            <x-input title="充值卡号" v-model="formBean.cardno" placeholder="输入充值卡号" />
             <x-number title="充值金额" v-model="formBean.price" :min="100" :step="100"/>
             <popup-picker title="支付方式" :data="types" v-model="type" placeholder="选择方式" show-name @on-change="handleTypeChange"></popup-picker>
         </group>
@@ -40,7 +41,8 @@ export default {
       formBean: {
         price: 100,
         name: '',
-        phone: ''
+        phone: '',
+        cardno: ''
       },
       channels:
       [
@@ -88,6 +90,10 @@ export default {
       }
       if (!this.val.length) {
         this.$vux.toast.text('选择油卡类型')
+        return
+      }
+      if (!this.formBean.cardno) {
+        this.$vux.toast.text('输入充值卡号')
         return
       }
       if (!this.type.length) {

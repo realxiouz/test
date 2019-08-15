@@ -105,9 +105,9 @@ export default {
  padding: 10px;
  background: rgba(0,0,0,.5);
   img {
-    width: 80px;
+    width: auto;
     height: 80px;
-    margin-right: 16px;
+    margin-right: 8px;
   }
   >div{
     flex: 1;

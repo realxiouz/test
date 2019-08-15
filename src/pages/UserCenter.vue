@@ -9,7 +9,10 @@
             />
           </div>
           <div class="name">{{user.nickname||user.mobile}}</div>
-          <div @click.stop="$router.push('/member')" :style="user.level == 1?'color:#333':'color:blue'">{{user.level == 1 ? '(合伙人)':'(普通会员)成为合伙人?'}}</div>
+          <div style="color:#333;text-align:center">
+            <span v-if="user.level == 1">(合伙人)</span>
+            <span v-else @click.stop="$router.push('/member')">(普通会员)<span style="color:blue;font-weight:bold">成为合伙人?</span></span>
+          </div>
         </div>
         <div class="f3">
           <div class="item" @click="$router.push('/money-tip/0')">
@@ -51,7 +54,7 @@
               <img src="../assets/card.png" alt="">
               <div>
                 <div class="title">加油卡充值</div>
-                <div class="sub-title">{{oilRatio}}折</div>
+                <div class="sub-title">优惠{{radioMax}}%</div>
               </div>
             </div>
           </div>
@@ -60,7 +63,7 @@
               <img src="../assets/phone.png" alt="">
               <div>
                 <div class="title">话费充值</div>
-                <div class="sub-title">{{phoneMin}}折起</div>
+                <div class="sub-title">优惠{{phoneMin}}%</div>
               </div>
             </div>
           </div>
@@ -168,6 +171,12 @@ export default {
       let d = r.data
       let radio = 10 - d[new Date().getDate()]
       this.setOilRatio(radio)
+
+      let arr = []
+      for (const key in r.data) {
+        arr.push(r.data[key] - 0)
+      }
+      this.radioMax = Math.max(...arr) * 10
     })
 
     phoneRatio().then(r => {
@@ -177,9 +186,8 @@ export default {
         arr.push(r.data[key] - 0)
         arrTemp.push(`充值${key},优惠${r.data[key]}%`)
       }
-      let max = Math.min(...arr)
-      this.setPhoneMin(10 - max / 10)
-      this.setPhoneStr(arrTemp.join(';'))
+      this.setPhoneMin(Math.max(...arr))
+      this.setPhoneStr(arrTemp.join('<br/>'))
     })
   },
   components: {
@@ -189,6 +197,7 @@ export default {
   },
   data () {
     return {
+      radioMax: '',
       webHost: WEB_HOST,
       groups: [
         {

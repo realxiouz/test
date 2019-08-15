@@ -4,7 +4,8 @@
           话费充值
           <span style="font-weight:normal;color: green;" @click="$router.push('/phone-list')">充值记录</span>
         </div>
-        <group style="padding:58px 0px 0" :title="phoneStr">
+        <group style="padding:58px 0px 0">
+            <div slot='title' v-html="phoneStr" style="padding:10px;color:#999"></div>
             <x-input title="用户名" v-model="formBean.name" placeholder="输入姓名"/>
             <x-input title="手机号"
               v-model="formBean.phone"
