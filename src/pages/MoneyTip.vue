@@ -49,6 +49,13 @@ export default {
   methods: {
     handleMoney () {
       switch (this.$route.params.type) {
+        case '0':
+          if (this.user.level === '0') {
+            this.$router.push('/member')
+          } else {
+            this.$router.push('/photo-post')
+          }
+          break
         case '1':
           this.$router.push('/with-draw')
           break
