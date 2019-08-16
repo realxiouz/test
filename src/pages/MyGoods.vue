@@ -22,7 +22,7 @@
                 <div>快递公司: {{i.express_company}}</div>
                 <div>快递单号: {{i.express_no}}</div>
               </template>
-              <div>{{moment(i.createtime*1000).format('YYYY-MM-DD hh:mm')}}</div>
+              <div>{{moment(i.createtime*1000).format('YYYY-MM-DD HH:mm')}}</div>
             </div>
           </cell>
         </group>

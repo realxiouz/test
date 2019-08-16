@@ -10,11 +10,11 @@
           v-for="(i, inx) in list"
           :key="inx"
           :title="i.goodsname"
-          :inline-desc="moment(i.createtime*1000).format('YYYY-MM-DD hh:mm')"
+          :inline-desc="moment(i.createtime*1000).format('YYYY-MM-DD HH:mm')"
           :link="tabInx===0?`/photo-detail/${i.gallery_id}`:`/video-detail/${i.video_id}`"
         >
           <span slot="inline-desc">
-            {{moment(i.createtime*1000).format('YYYY-MM-DD hh:mm')}}&nbsp;&nbsp;<badge :text="`${i.score}积分`" />
+            {{moment(i.createtime*1000).format('YYYY-MM-DD HH:mm')}}&nbsp;&nbsp;<badge :text="`${i.score}积分`" />
           </span>
         </cell>
       </group>

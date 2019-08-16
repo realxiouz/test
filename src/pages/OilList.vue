@@ -12,7 +12,7 @@
             v-for="(i, inx) in list"
             :key="inx"
             :title="calcTitle(i)"
-            :inline-desc="moment(i.createtime*1000).format('YYYY-MM-DD hh:mm')"
+            :inline-desc="moment(i.createtime*1000).format('YYYY-MM-DD HH:mm')"
           >
             <span class="weight" :style="`color: ${i.status == 0 ?'red':'greed'}`">{{i.status == 0 ? '失败':'成功'}}</span>
           </cell>
@@ -83,7 +83,7 @@ export default {
       }
     },
     calcTitle (i) {
-      return `${this.payTypeObj[i.pay_type]}充值${this.typeObj[i.type]}${i.price},优惠${i.discount_price}`
+      return `${this.payTypeObj[i.pay_type]}充值${this.typeObj[i.type]}${i.price}到${i.cardno},优惠${i.discount_price}`
     }
   }
 }

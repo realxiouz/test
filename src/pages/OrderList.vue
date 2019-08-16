@@ -12,7 +12,7 @@
             v-for="(i, inx) in list"
             :key="inx"
             :title="`${i.price}元购买${i.score}积分`"
-            :inline-desc="moment(i.createtime*1000).format('YYYY-MM-DD hh:mm')"
+            :inline-desc="moment(i.createtime*1000).format('YYYY-MM-DD HH:mm')"
           >
             <!-- <span slot="after-title">
               <badge :text="i.type_text"/>

@@ -38,7 +38,7 @@ export default {
     textObj: {
       '0': '去赚钱',
       '1': '去提现',
-      '2': '去投稿',
+      '2': '去赚钱',
       '3': '去投稿',
       '4': '去赚钱',
       '5': '去加盟',
@@ -51,6 +51,9 @@ export default {
       switch (this.$route.params.type) {
         case '1':
           this.$router.push('/with-draw')
+          break
+        case '2':
+          this.$router.push('/articles')
           break
         case '3':
           if (this.user.level === '0') {

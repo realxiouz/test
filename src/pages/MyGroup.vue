@@ -17,7 +17,7 @@
             v-for="(i, inx) in list"
             :key="inx"
             :title="i.nickname"
-            :inline-desc="moment(i.createtime*1000).format('YYYY-MM-DD hh:mm')"
+            :inline-desc="moment(i.createtime*1000).format('YYYY-MM-DD HH:mm')"
           >
             <img
               slot="icon"

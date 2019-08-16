@@ -12,7 +12,7 @@
             v-for="(i, inx) in list"
             :key="inx"
             :title="i.memo"
-            :inline-desc="moment(i.createtime*1000).format('YYYY-MM-DD hh:mm')"
+            :inline-desc="moment(i.createtime*1000).format('YYYY-MM-DD HH:mm')"
           >
             <span class="weight" :style="`color: ${i.after - i.before >= 0 ?'green':'red'}`">{{i.after - i.before>0?"+":''}}{{i.after - i.before}}</span>
           </cell>

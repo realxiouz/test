@@ -169,14 +169,13 @@ export default {
 
     oilRatio().then(r => {
       let d = r.data
-      let radio = 10 - d[new Date().getDate()]
-      this.setOilRatio(radio)
+      this.setOilRatio(d[new Date().getDate()])
 
       let arr = []
       for (const key in r.data) {
         arr.push(r.data[key] - 0)
       }
-      this.radioMax = Math.max(...arr) * 10
+      this.radioMax = Math.max(...arr)
     })
 
     phoneRatio().then(r => {
