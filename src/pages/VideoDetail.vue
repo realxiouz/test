@@ -111,7 +111,9 @@ export default {
     ...mapState(['user'])
   },
   mounted () {
-    if (validateToken(new Date().getTime())) {
+    if (this.user.level === '1') {
+      this.isBuy = true
+    } else if (validateToken(new Date().getTime())) {
       checkBuyVideo({id: this.$route.params.id}).then(r => {
         this.isBuy = true
       })

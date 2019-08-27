@@ -12,7 +12,7 @@
         <div>{{article.nickname}}</div>
       </div>
       <div class="auth-right">
-        <span>{{moment().from(article.createtime*1000)}}</span>
+        <span>{{moment(article.createtime*1000).format('YYYY-MM-DD')}}</span>
         <span class="dot"></span>
         <span>{{article.pv}}浏览</span>
       </div>
@@ -53,7 +53,7 @@
       <div style="padding:10px;">
         <uploader :images="imgs" :max="1" title='上传分享截图,获取奖励'/>
       </div>
-      
+
       <div style="padding:10px;">
         <x-button type="primary" @click.native="apply">提交审核</x-button>
       </div>

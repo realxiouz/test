@@ -33,7 +33,9 @@ export default {
   name: 'PhotoDetail',
   mounted () {
     this.getData()
-    if (validateToken(new Date().getTime())) {
+    if (this.user.level === '1') {
+      this.isBuy = true
+    } else if (validateToken(new Date().getTime())) {
       checkBuyPhoto({id: this.$route.params.id}).then(r => {
         this.isBuy = true
       })

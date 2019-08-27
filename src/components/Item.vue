@@ -3,8 +3,10 @@
     <div class="title" @click="toDetail">{{bean.name}}</div>
     <div class="img-wrap" @click="toDetail">
       <img v-if="type === 1" :src="webHost+bean.thumb_image" :style="`height: ${type === 1 ? '375px' : '200px'}`">
-      <video v-if="type === 2" :src="webHost+bean.file" style="height: 200px"></video>
+      <!-- <video v-if="type === 2" :src="webHost+bean.file" style="height: 200px"></video> -->
+      <img v-if="type === 2" :src="webHost+bean.image" style="height: 200px" />
       <div class="count">{{bean.price ? `${bean.price}金币` : '免费'}}</div>
+      <img v-if="type === 2" src="/src/assets/play.png" alt="" class="play">
     </div>
     <div class="auth-info" @click="toAuth">
       <div class="ava-wrap">
@@ -75,6 +77,16 @@ export default {
   }
   .img-wrap {
     position: relative;
+    .play{
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      left: 50%;
+      top: 50%;
+      margin-left: -24px;
+      margin-top: -24px;
+      z-index: 10;
+    }
     > img {
       width: 100%;
       margin-right: auto;

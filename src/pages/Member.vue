@@ -1,11 +1,12 @@
 <template>
   <div>
-    <box gap="40px">
-      <span style="font-size: 20px;font-weight: 400;">成为合伙人</span>
+    <box gap="40px 15px">
+      <span style="font-size: 16px;font-weight: 400;">成为合伙人,赚钱（省钱）第一步！</span>
+      <div style="color:#999">1680元/年</div>
     </box>
 
     <group>
-        <x-input title="充值" disabled :value="1680" text-align="right"/>
+        <x-input title="合伙人年费用" disabled :value="1680" text-align="right"/>
     </group>
 
     <checker

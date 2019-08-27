@@ -18,14 +18,12 @@
           <!-- <div class="v-count">浏览量&nbsp;{{bean.pv}}</div>
           <div class="c-time">{{moment().from(bean.createtime*1000)}}</div> -->
         </div>
-        <div style="color:red">
+        <div :style="bean.surplusprice=='0.00'?'color:#999':'color:red'">
           <span>总金额:{{bean.totalprice}}元</span>
           <span class="dot"></span>
           <span>剩余:{{bean.surplusprice}}元</span>
           <span class="dot"></span>
           <span>立即分享赚: {{bean.shareprice}}元</span>
-          <!-- <span class="dot"></span>
-           共{{bean.sharecount}}次 -->
         </div>
       </div>
       <div style="height:160px;margin-top:10px;">
@@ -40,7 +38,7 @@
           <!-- <div class="v-count">浏览量&nbsp;{{bean.pv}}</div>
           <div class="c-time">{{moment().from(bean.createtime*1000)}}</div> -->
         </div>
-        <div style="color:red">
+        <div :style="bean.surplusprice=='0.00'?'color:#999':'color:red'">
           <span>总金额:{{bean.totalprice}}元</span>
           <span class="dot"></span>
           <span>剩余:{{bean.surplusprice}}元</span>
@@ -67,7 +65,7 @@
           <!-- <div class="v-count">浏览量&nbsp;{{bean.pv}}</div>
           <div class="c-time">{{moment().from(bean.createtime*1000)}}</div> -->
         </div>
-        <div style="color:red">
+        <div :style="bean.surplusprice=='0.00'?'color:#999':'color:red'">
           <span>总金额:{{bean.totalprice}}元</span>
           <span class="dot"></span>
           <span>剩余:{{bean.surplusprice}}元</span>
