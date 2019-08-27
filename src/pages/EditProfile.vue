@@ -25,7 +25,9 @@
       placeholder="输入昵称,最多8字符"
       text-align="right"
       ></x-input>
-
+      <cell title="地址 " link="/area-list" is-link>
+        编辑
+     </cell>
      <x-input title="签名 " v-model="formBean.bio" ref="bio" required :max="20"
       placeholder="输入签名,最多30字符" text-align="right"></x-input>
       <x-input
