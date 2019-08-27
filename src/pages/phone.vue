@@ -18,6 +18,7 @@
             <popup-picker title="选择类型" :data="channels" v-model="val" placeholder="选择方式" show-name @on-change="handleChange"></popup-picker>
             <x-number title="充值金额" v-model="formBean.price" :min="10" :step="10" fillable/>
             <popup-picker title="支付方式" :data="types" v-model="type" placeholder="选择方式" show-name @on-change="handleTypeChange"></popup-picker>
+            <x-input title="备注" v-model="formBean.content" placeholder="输入备注"/>
         </group>
         <box gap="100px 10px 0">
             <x-button type="primary" @click.native="handleOk">确定</x-button>

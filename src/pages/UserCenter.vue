@@ -102,9 +102,9 @@ export default {
               des: '(金币可兑换礼品)'
             },
             {
-              title: '图/文推广',
+              title: '审核赚现',
               link: '/check-list',
-              des: '(我分享的)'
+              des: '(提交分享截图审核赚现)'
             }
           ]
         },
@@ -213,9 +213,9 @@ export default {
               des: '(金币可兑换礼品)'
             },
             {
-              title: '图/文推广',
+              title: '审核赚现',
               link: '/check-list',
-              des: '(我分享的)'
+              des: '(提交分享截图审核赚现)'
             }
           ]
         },

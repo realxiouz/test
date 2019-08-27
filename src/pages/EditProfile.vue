@@ -14,6 +14,7 @@
       :max="11"
       placeholder="输入用户名,最多8字符"
       text-align="right"
+      disabled
     />
      <x-input
       title="昵称 "
@@ -24,7 +25,7 @@
       placeholder="输入昵称,最多8字符"
       text-align="right"
       ></x-input>
-     
+
      <x-input title="签名 " v-model="formBean.bio" ref="bio" required :max="20"
       placeholder="输入签名,最多30字符" text-align="right"></x-input>
       <x-input
