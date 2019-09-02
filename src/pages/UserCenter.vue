@@ -88,26 +88,13 @@ export default {
   mounted () {
     if (this.user.level === '0') {
       this.groups = [
-        {
-          text: '我的账户',
-          show: false,
-          children: [
-            {
-              title: '红包任务',
-              link: '/reward'
-            },
-            {
-              title: '兑换商品',
-              link: '/goods',
-              des: '(金币可兑换礼品)'
-            },
-            {
-              title: '审核赚现',
-              link: '/check-list',
-              des: '(提交分享截图审核赚现)'
-            }
-          ]
-        },
+        // {
+        //   text: '我的账户',
+        //   show: false,
+        //   children: [
+
+        //   ]
+        // },
         {
           text: '我的钱包',
           show: false,
@@ -119,6 +106,15 @@ export default {
             {
               title: '我的订单',
               link: '/my-order'
+            },
+            {
+              title: '红包任务',
+              link: '/reward'
+            },
+            {
+              title: '兑换商品',
+              link: '/goods',
+              des: '(金币可兑换礼品)'
             }
           ]
         },
@@ -126,6 +122,11 @@ export default {
           text: '我要赚钱',
           show: false,
           children: [
+            {
+              title: '审核赚现',
+              link: '/check-list',
+              des: '(提交分享截图审核记录)'
+            },
             {
               title: '分享推广',
               link: '/qrcode'
@@ -199,26 +200,13 @@ export default {
       radioMax: '',
       webHost: WEB_HOST,
       groups: [
-        {
-          text: '我的账户',
-          show: false,
-          children: [
-            {
-              title: '红包任务',
-              link: '/reward'
-            },
-            {
-              title: '兑换商品',
-              link: '/goods',
-              des: '(金币可兑换礼品)'
-            },
-            {
-              title: '审核赚现',
-              link: '/check-list',
-              des: '(提交分享截图审核赚现)'
-            }
-          ]
-        },
+        // {
+        //   text: '我的账户',
+        //   show: false,
+        //   children: [
+
+        //   ]
+        // },
         {
           text: '我的钱包',
           show: false,
@@ -230,6 +218,15 @@ export default {
             {
               title: '我的订单',
               link: '/my-order'
+            },
+            {
+              title: '红包任务',
+              link: '/reward'
+            },
+            {
+              title: '兑换商品',
+              link: '/goods',
+              des: '(金币可兑换礼品)'
             }
           ]
         },
@@ -237,6 +234,11 @@ export default {
           text: '我要赚钱',
           show: false,
           children: [
+            {
+              title: '审核赚现',
+              link: '/check-list',
+              des: '(提交分享截图审核记录)'
+            },
             {
               title: '分享推广',
               link: '/qrcode'

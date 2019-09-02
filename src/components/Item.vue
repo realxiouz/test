@@ -6,7 +6,7 @@
       <!-- <video v-if="type === 2" :src="webHost+bean.file" style="height: 200px"></video> -->
       <img v-if="type === 2" :src="webHost+bean.image" style="height: 200px" />
       <div class="count">{{bean.price ? `${bean.price}金币` : '免费'}}</div>
-      <img v-if="type === 2" src="/src/assets/play.png" alt="" class="play">
+      <img v-if="type === 2" src="../assets/play.png" alt="" class="play">
     </div>
     <div class="auth-info" @click="toAuth">
       <div class="ava-wrap">

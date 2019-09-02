@@ -25,7 +25,8 @@
       placeholder="输入昵称,最多8字符"
       text-align="right"
       ></x-input>
-      <cell title="地址 " link="/area-list" is-link>
+      <cell title="详细地址" link="/area-list" is-link
+        :inline-desc='user.address?user.address:"还未设置"'>
         编辑
      </cell>
      <x-input title="签名 " v-model="formBean.bio" ref="bio" required :max="20"
@@ -53,11 +54,18 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
-import { uploadFile, editProfile } from '@/utils/api'
-import { WEB_HOST, MAX_SIZE_FOR_PHOTO } from '@/utils/const'
+import { uploadFile, editProfile, getInfoByToken } from '@/utils/api'
+import { WEB_HOST, MAX_SIZE_FOR_PHOTO, validateToken } from '@/utils/const'
 
 export default {
   name: 'EditProfile',
+  mounted () {
+    if (validateToken(new Date().getTime())) {
+      getInfoByToken().then(r => {
+        this.setUser(r.data)
+      })
+    }
+  },
   computed: {
     ...mapState(['user']),
     formBean () {
@@ -132,7 +140,8 @@ export default {
     }
   },
   data: _ => ({
-    avatarSrc: ''
+    avatarSrc: '',
+    address: ''
   })
 }
 </script>

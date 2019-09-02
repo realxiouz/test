@@ -73,7 +73,7 @@ export default {
     webHost: WEB_HOST,
 
     grids: [
-      {label: '赚钱秘籍', path: '/money-tip/0', src: require('../assets/tips.png')},
+      {label: '赚钱秘籍', path: '/money-tip/2', src: require('../assets/tips.png')},
       {label: '成为合伙人', path: '/member', src: require('../assets/members.png')},
       {label: '兑换商品', path: '/goods', src: require('../assets/shop.png')},
       {label: '加盟代理', path: '/money-tip/5', src: require('../assets/kefu.png')}

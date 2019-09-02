@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { moneyTip, withdrawTip, articleTip, contributeTip, partnerTip, joinTip, yuepaiTip, cooperationTip } from '@/utils/api'
+import { moneyTip, withdrawTip, articleTip, contributeTip, partnerTip, joinTip, yuepaiTip, cooperationTip, oilTip, phoneTip } from '@/utils/api'
 import { mapState } from 'vuex'
 
 export default {
@@ -22,7 +22,9 @@ export default {
       '4': partnerTip,
       '5': joinTip,
       '6': yuepaiTip,
-      '7': cooperationTip
+      '7': cooperationTip,
+      '8': oilTip,
+      '9': phoneTip
     }
     let getData = allMethod[this.$route.params.type]
     getData().then(r => {
@@ -43,7 +45,9 @@ export default {
       '4': '去赚钱',
       '5': '去加盟',
       '6': '去约拍',
-      '7': '去合作'
+      '7': '去合作',
+      '8': '去充值',
+      '9': '去充值'
     }
   }),
   methods: {
@@ -77,6 +81,12 @@ export default {
           break
         case '7':
           this.$router.push('/corporate?type=1')
+          break
+        case '8':
+          this.$router.go(-1)
+          break
+        case '9':
+          this.$router.go(-1)
           break
         default:
           break

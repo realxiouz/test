@@ -52,6 +52,8 @@ export const partnerTip = _ => r.get('/index/partner_content')
 export const joinTip = _ => r.get('/index/join_content')
 export const yuepaiTip = _ => r.get('/index/yuepai_content')
 export const cooperationTip = _ => r.get('/index/cooperation_content')
+export const oilTip = _ => r.get('/index/rechargecardrule')
+export const phoneTip = _ => r.get('/index/rechargephonerule')
 
 export const withdraw = p => r.post('/user_deposit/apply', p)
 export const moneyDetail = p => r.get('/user_deposit/moneydetail', {params: p})

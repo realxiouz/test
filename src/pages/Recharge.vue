@@ -1,6 +1,6 @@
 <template>
   <div>
-    <box gap="40px">
+    <box style="padding:40px 15px">
       <span style="font-size: 20px;font-weight: 400;">充值</span>
     </box>
     <checklist title="选择充值金额" :options="options" v-model="selVal" :max="1" :min="1"></checklist>

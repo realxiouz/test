@@ -18,7 +18,7 @@
     </box>
     <!-- <div style="margin-top:10px;padding:10px">{{goods.content}}</div> -->
     <panel header="商品详情">
-      <div slot="body" style="margin-top:10px;padding:10px">{{goods.content}}</div>
+      <div slot="body" style="margin-top:10px;padding:10px" v-html="goods.content"></div>
     </panel>
     <div style="height:154px"></div>
     <div style="position: fixed; bottom: 0; left:0;right:0">

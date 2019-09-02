@@ -22,7 +22,11 @@
       <div>
         <div @click="showApply">
           <img src="../assets/pv.png" alt="">
-          <span>审核任务</span>
+          <div style="display:flex;flex-direction: column;align-items: center;">
+            <div>审核赚现</div>
+            <div style="font-size:9px;color:#ccc">提交分享截图</div>
+          </div>
+
         </div>
       </div>
       <div @click="shareWechat">

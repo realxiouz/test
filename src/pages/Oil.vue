@@ -12,6 +12,8 @@
             <x-number title="充值金额" v-model="formBean.price" :min="100" :step="100" :max="1000"/>
             <popup-picker title="支付方式" :data="types" v-model="type" placeholder="选择方式" show-name @on-change="handleTypeChange"></popup-picker>
             <x-input title="备注" v-model="formBean.content" placeholder="输入备注"/>
+            <cell :is-link="false" inline-desc='油卡充值有什么优惠规则?' @click.native="$router.push('/money-tip/8')">
+            </cell>
         </group>
         <box gap="100px 10px 0">
             <x-button type="primary" @click.native="handleOk">确定</x-button>
