@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="f3">
-          <div class="item" @click="$router.push('/money-tip/0')">
+          <div class="item" @click="$router.push('/money-tip/2')">
             <img src="../assets/tip.png" alt="">赚钱秘籍
           </div>
           <div class="item" @click="$router.push('/qrcode')">

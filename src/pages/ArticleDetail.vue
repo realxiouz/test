@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="content" v-html="article.content" ref="content"></div>
-    <div class="share">
+    <!-- <div class="share">
       <div>
         <div @click="showApply">
           <img src="../assets/pv.png" alt="">
@@ -41,6 +41,11 @@
           <span>朋友圈</span>
         </div>
       </div>
+    </div> -->
+    <div style="display:flex;justify-content: space-around; margin-top:10px">
+      <img src="../assets/check.png" alt="" @click="showApply">
+      <img src="../assets/wc.png" alt="" @click="shareWechat">
+      <img src="../assets/friend.png" alt="">
     </div>
     <div style="height:10px"></div>
 
