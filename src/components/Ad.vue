@@ -24,6 +24,7 @@
 <script>
 import { ad } from '@/utils/api'
 import { WEB_HOST } from '@/utils/const'
+import { mapMutations } from 'vuex'
 
 export default {
   mounted () {
@@ -41,8 +42,14 @@ export default {
     show: false
   }),
   methods: {
+    ...mapMutations(['setAdContent']),
     newPage (i) {
-      window.open(i.target, '_blank')
+      if (i.type === '2') {
+        window.open(i.target, '_blank')
+      } else if (i.type === '1') {
+        this.setAdContent(i.content)
+        this.$router.push('/ad-content')
+      }
     },
     handleClose () {
       this.show = false

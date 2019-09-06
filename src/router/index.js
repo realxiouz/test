@@ -381,6 +381,15 @@ const router = new Router({
         title: '审核上传图文',
         auth: true
       }
+    },
+    {
+      path: '/ad-content',
+      name: 'AdContent',
+      component: _ => import('@/pages/AdContent'),
+      meta: {
+        title: '详情',
+        auth: true
+      }
     }
   ]
 })
