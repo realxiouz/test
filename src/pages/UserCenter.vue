@@ -88,13 +88,6 @@ export default {
   mounted () {
     if (this.user.level === '0') {
       this.groups = [
-        // {
-        //   text: '我的账户',
-        //   show: false,
-        //   children: [
-
-        //   ]
-        // },
         {
           text: '我的钱包',
           show: false,
@@ -200,13 +193,6 @@ export default {
       radioMax: '',
       webHost: WEB_HOST,
       groups: [
-        // {
-        //   text: '我的账户',
-        //   show: false,
-        //   children: [
-
-        //   ]
-        // },
         {
           text: '我的钱包',
           show: false,
@@ -314,6 +300,18 @@ export default {
       } else {
         this.$router.push('/phone')
       }
+    }
+  },
+  watch: {
+    'user.is_agent': {
+      handler (val) {
+        if (val === 0) {
+          this.groups[2].children[0].link = '/money-tip/5'
+        } else if (val === 1) {
+          this.groups[2].children[0].link = '/join-info'
+        }
+      },
+      immediate: true
     }
   }
 }

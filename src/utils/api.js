@@ -112,3 +112,5 @@ export const oilRatio = _ => r.get('/recharge_refuelingcard/rechargelist')
 export const phoneRatio = _ => r.get('/recharge_telephonebill/rechargelist')
 
 export const checkList = p => r.get('/article_examinerecord', {params: p})
+
+export const joinInfo = p => r.get('/franchise_agent/getagentuser', {params: p})

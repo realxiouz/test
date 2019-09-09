@@ -388,6 +388,15 @@ const router = new Router({
       component: _ => import('@/pages/AdContent'),
       meta: {
         title: '详情',
+        auth: false
+      }
+    },
+    {
+      path: '/join-info',
+      name: 'JoinInfo',
+      component: _ => import('@/pages/JoinInfo'),
+      meta: {
+        title: '代理信息',
         auth: true
       }
     }
